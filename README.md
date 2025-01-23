@@ -59,6 +59,7 @@ project-name/
 
 ## Contributors
 - Wynn Le - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- Hi my name is Ana Silva! 
 - Luka- BCIT CST Student that likes coffee 
 
 ---
