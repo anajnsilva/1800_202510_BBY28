@@ -21,4 +21,35 @@ footer {
     font-size: medium;
 }
 
+/* Profile page CSS */
 
+#profile-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 1rem;
+}
+
+.accordion {
+    font-family: "Montserrat", sans-serif;
+    font-size: large;
+}
+
+.accordion-button {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.accordion ul {
+    list-style: none;
+}
+
+.accordion li {
+    margin: 1rem;
+}
+
+.btn-info {
+    margin-left: 1em;
+}

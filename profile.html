@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>BeCool</title>
+  <title>My Profile</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -36,7 +36,7 @@
   <!-- Stuff for body goes here -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/images/bell.png" alt="Notifications Icon" width="35" height="35"
+      <a class="navbar-brand" href="#"><img src="/images/bell.png" alt="Notifications Icon" width="35" height="30"
           class="d-inline-block align-text-top"></a>
       <img src="/images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -66,23 +66,84 @@
       </div>
     </div>
   </nav>
-  <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/images/BBY01.jpg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Project 1800</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Welcome to our project page! </p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Call To Action</button>
 
+  <!-- Profile information Display -->
+  <div id="profile-title">
+    <h1><strong>User Profile</strong></h1>
+  </div>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Edit Profile Information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul id="profile-info">
+            <li>
+              <strong>Display Name: </strong>*user's name* <button type="button" class="btn btn-info" id="edit-name">Edit</button>
+            </li>
+            <li>
+              <strong>Email: </strong>*user's email* <button type="button" class="btn btn-info" id="edit-email">Edit</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          User Statistics
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul id="user-stats">
+            <li>
+              <strong>Lifetime Donations: </strong> *user donations*
+            </li>
+            <li>
+              <strong>Donations this month: </strong> *user donations*
+            </li>
+            </br>
+            <li>
+              Wow! you have fed *number* people through your community fridge contributions! Your support makes a great
+              difference on the life of those in your community, and is widely appreciated. Keep up the great work!
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Profile History
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          *list of profile history in format: Mar. 18th - Donated carrots to SE2 Community fridge. Great job!*
+        </div>
       </div>
     </div>
   </div>
+  <div id="user-profile">
+
+  </div>
+
   <footer class="footer">
     <nav class="navbar sticky-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="/images/home.png" alt="Home Icon" width="35" height="35"
+        <a class="navbar-brand" href="./landingpage.html"><img src="/images/home.png" alt="Home Icon" width="35" height="35"
             class="d-inline-block align-text-top"></a>
-        <a class="navbar-brand" href="./profile.html"><img src="/images/user.png" alt="User Icon" width="35" height="35"
+        <a class="navbar-brand" href="#"><img src="/images/user.png" alt="User Icon" width="35" height="35"
             class="d-inline-block align-text-top"></a>
         <a class="navbar-brand" href="#"><img src="/images/setting.png" alt="Settings Icon" width="35" height="35"
             class="d-inline-block align-text-top"></a>
