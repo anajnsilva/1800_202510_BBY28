@@ -53,3 +53,22 @@ footer {
 .btn-info {
     margin-left: 1em;
 }
+
+/* About Us Page CSS */
+
+.about-us-container {
+    font-family: "Montserrat", sans-serif;
+    margin: 1rem;
+    padding-bottom: 4rem;
+}
+
+.about-us-container p {
+    font-size: 14pt;
+}
+
+.about-us-container img {
+    width: 350px;
+    float: left;
+    border-radius: 30%;
+    margin: 1rem;
+}
