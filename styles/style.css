@@ -72,3 +72,27 @@ footer {
     border-radius: 30%;
     margin: 1rem;
 }
+
+/* Favourite Fridges Page CSS */
+
+#favourites {
+    padding-bottom: 6rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16pt;
+}
+
+#favourites h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0.5em;
+    font-weight: bolder;
+    font-size: 26pt;
+}
+
+
+
+#favourites img {
+    height: 300px;
+    object-fit: cover;
+}
