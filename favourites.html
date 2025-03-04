@@ -36,9 +36,9 @@
   <!-- Stuff for body goes here -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/images/bell.png" alt="Notifications Icon" width="35" height="30"
+      <a class="navbar-brand" href="#"><img src="../images/bell.png" alt="Notifications Icon" width="35" height="35"
           class="d-inline-block align-text-top"></a>
-      <img src="/images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
+      <img src="../images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -66,13 +66,45 @@
       </div>
     </div>
   </nav>
+  <div id="favourites">
+    <h1> Your Favourite Fridges</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
+            <p class="card-text">Address of fridge with link to open directions in google maps.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
+            <p class="card-text">Address of fridge with link to open directions in google maps.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
+            <p class="card-text">Address of fridge with link to open directions in google maps.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
   </div>
   <footer class="footer">
     <nav class="navbar sticky-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="./landingpage.html"><img src="/images/home.png" alt="Home Icon" width="35" height="35"
-            class="d-inline-block align-text-top"></a>
+        <a class="navbar-brand" href="./landingpage.html"><img src="/images/home.png" alt="Home Icon" width="35"
+            height="35" class="d-inline-block align-text-top"></a>
         <a class="navbar-brand" href="./profile.html"><img src="/images/user.png" alt="User Icon" width="35" height="35"
             class="d-inline-block align-text-top"></a>
         <a class="navbar-brand" href="#"><img src="/images/setting.png" alt="Settings Icon" width="35" height="35"
@@ -85,6 +117,9 @@
   <!---------------------------------------------->
 
   <!-- Link to scripts of your own -->
+  <script src="./scripts/firebaseAPI_BBY28.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
