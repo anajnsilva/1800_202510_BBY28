@@ -95,4 +95,33 @@ footer {
 #favourites img {
     height: 300px;
     object-fit: cover;
+   
+}
+
+#imgs img {
+    object-fit: cover;
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+  
+}
+
+#imgs {
+    height: 150px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#desc {
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+#end {
+    height: 50vh;
 }
