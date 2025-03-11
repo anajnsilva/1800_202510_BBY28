@@ -126,3 +126,22 @@ footer {
     height: 50vh;
 }
 
+/* fridge browsing page CSS */
+
+#imgs img {
+    height: 180px;
+}
+
+#desc {
+    padding: 1em;
+    font-size: 22pt;
+}
+
+.favourite-button {
+    background: none;
+    border: none;
+    padding: 0;
+    size: 35px;
+}
+
+
