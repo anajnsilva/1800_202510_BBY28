@@ -53,15 +53,26 @@
       aria-describedby="basic-addon1">
     <span class="input-group-text" id="basic-addon1">Filter</span>
   </div>
-  <ul class="list-group" id="fridgebrowse-fridgecard">
-    <li class="list-group-item" id="imgs"> <img src="/images/Fridge1.jpg"> </li>
-    <li class="list-group-item" id="desc">
-      <span id="fridge-name"> SE02 Community Fridge </span>
-      <span id="fridge-distance"> 1.28 km </span>
-      <button class="favourite-button" height="35px" width="35px"><img src="../images/favourite-heart-before.png" alt="favourite"width="50px"></button>
-    </li>
-    
-  </ul>
+  <template id="fridgeliststemplate">
+    <ul class="list-group" id="fridgebrowse-fridgecard">
+      <li class="list-group-item" id="imgs" > <img id="fridge-image" src=" ... " alt=" ..." height="200px"/> </li>
+      <li class="list-group-item" id="desc">
+        <span id="fridge-name"></span>
+        <span id="fridge-distance"></span>
+        <a class="btn card-href">See Fridge</a>
+        <button class="favourite-button" height="35px" width="35px"><img src="../images/favourite-heart-before.png"
+            alt="favourite" width="50px"></button>
+       
+      </li>
+    </ul>
+  </template>
+
+  <!-- Here is the container for cards  -->
+  <div class="fridgelist-container">
+    <div id="fridges-go-here" class="row row-cols-auto">
+    </div>
+  </div>
+
 
   <nav id="footerPlaceholder"></nav>
   <!---------------------------------------------->
@@ -73,9 +84,7 @@
   <script src="./scripts/fridgebrowse.js"></script>
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
-   <script src="./scripts/direction.js"></script>
-   <script src="./scripts/configDir.js"></script>
-   <script src="./scripts/FridgeBrowse.js"></script>
+
 </body>
 
 </html>
