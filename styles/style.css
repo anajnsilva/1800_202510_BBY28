@@ -98,7 +98,10 @@ footer {
    
 }
 
-#imgs img {
+#fridgelist-container {
+    padding-top: 100px;
+}
+.imgs img {
     object-fit: cover;
     width: 100%;
     overflow: hidden;

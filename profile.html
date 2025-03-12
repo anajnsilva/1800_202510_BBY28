@@ -60,16 +60,32 @@
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <ul id="profile-info">
-            <li>
-              <strong>Display Name: </strong>*user's name* <button type="button" class="btn btn-info"
-                id="edit-name">Edit</button>
-            </li>
-            <li>
-              <strong>Email: </strong>*user's email* <button type="button" class="btn btn-info"
-                id="edit-email">Edit</button>
-            </li>
-          </ul>
+          <div class="container">
+            <h1>User Profile </h1>
+            <form>
+              <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>               
+                <br>
+                <div class="form-group">
+                  <label>Notify me when: </label>
+              </br>
+              <input type="checkbox" id="donations" checked>
+              <label for="donations">Items are donated to one of my favourite fridges</label>
+              </br>
+              <input type="checkbox" id="taken">
+              <label for="taken">Items are taken from one of my favourite fridges</label>
+                </div>
+              </fieldset>
+              <div class="d-flex justify-content-end mt-5">
+                <button type="button" class="btn btn-secondary" onclick="editUserInfo()" >Edit</button>
+                <span style="width: 10px"></span>
+                <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -125,21 +141,16 @@
         <div class="accordion-body">
           <ul>
             <li>
-              <strong>Notify me when: </strong>
-            </br>
-              <input type="checkbox" id="donations" checked>
-              <label for="donations">Items are donated to one of my favourite fridges</label>
-            </br>
-              <input type="checkbox" id="taken">
-              <label for="taken">Items are taken from one of my favourite fridges</label>
+              
             </li>
             <li>
               <strong>Location Services</strong>
-            </br>
-            To change your location permission on chrome, follow the below steps: <br>
-            Select Settings > Advanced > Privacy and security > Site Settings > Location
-            <br>
-            <strong>Please note that in order to use the donate or take features on a community fridge, location permission must be shared.</strong>
+              </br>
+              To change your location permission on chrome, follow the below steps: <br>
+              Select Settings > Advanced > Privacy and security > Site Settings > Location
+              <br>
+              <strong>Please note that in order to use the donate or take features on a community fridge, location
+                permission must be shared.</strong>
             </li>
           </ul>
         </div>
@@ -159,8 +170,7 @@
   <script src="./scripts/firebaseAPI_BBY28.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
-  <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
+  <script src="./scripts/profile.js"></script> 
 
 </body>
 
