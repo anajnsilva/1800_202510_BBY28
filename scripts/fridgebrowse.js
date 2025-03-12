@@ -52,7 +52,7 @@ function displayCardsDynamically(collection) {
 
     db.collection(collection).get()   //the collection called "fridges"
         .then(allFridges => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
+            //var i = 1;  //Optional: if you want to have a unique ID for each fridge
             allFridges.forEach(doc => { //iterate thru each doc
                 var docID = doc.id;
                 console.log(docID);
@@ -63,8 +63,8 @@ function displayCardsDynamically(collection) {
 
                 //update title and text and image
                 
-                newcard.querySelector('#fridge-name').innerHTML = title;
-                newcard.querySelector('#fridge-image').src = `./images/${fridgeCode}.png`; //Example: NV01.png
+                newcard.querySelector('.fridge-name').innerHTML = title;
+                newcard.querySelector('.fridge-image').src = `./images/${fridgeCode}.png`; //Example: NV01.png
                 newcard.querySelector('a').href = "contents.html?docID=" + docID;
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);

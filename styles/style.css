@@ -100,6 +100,7 @@ footer {
 
 #fridgelist-container {
     padding-top: 100px;
+    margin:0px;
 }
 .imgs img {
     object-fit: cover;
@@ -137,7 +138,7 @@ footer {
 
 #desc {
     padding: 1em;
-    font-size: 22pt;
+    font-size: 18pt;
 }
 
 #search-bar .input-group-text,
