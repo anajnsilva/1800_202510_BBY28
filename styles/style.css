@@ -152,7 +152,7 @@ footer {
     size: 35px;
 }
 
-#fridge-direction {
+.direction-button {
     border-radius: 10px;
     background-color: white;
     display: flex;
