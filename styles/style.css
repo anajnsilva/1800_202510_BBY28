@@ -134,7 +134,7 @@ footer {
 
 #desc {
     padding: 1em;
-    font-size: 22pt;
+    font-size: 15pt;
 }
 
 #search-bar .input-group-text,
@@ -147,6 +147,13 @@ footer {
     border: none;
     padding: 0;
     size: 35px;
+}
+
+#fridge-direction {
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
 }
 
 
