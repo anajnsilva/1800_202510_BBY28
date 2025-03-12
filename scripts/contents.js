@@ -13,9 +13,7 @@ function displayFridgeInfo() {
             //let content = doc.data().details;
             
             // only populate title, and image
-            document.getElementById("fridgename").innerHTML = title;
-            let imgEvent = document.querySelector(".fridge-img");
-            imgEvent.src = "./images/" + Fridgecode + ".png";
+            document.querySelector(".h5").innerHTML = title;
         } );
 }
 displayFridgeInfo();
