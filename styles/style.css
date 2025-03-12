@@ -100,6 +100,7 @@ footer {
 
 #fridgelist-container {
     padding-top: 100px;
+    margin:0px;
 }
 .imgs img {
     object-fit: cover;
