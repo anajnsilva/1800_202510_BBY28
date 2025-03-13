@@ -130,16 +130,13 @@ footer {
 
 #imgs img {
     height: 180px;
+    
 }
 #fridgebrowse-fridgecard {
     padding: 5px;
     width: 100%;
 }
 
-#seefridge {
-    display:flex;
-    flex-direction: row-reverse;
-}
 #desc {
     padding: 1em;
     font-size: 15pt;
@@ -157,7 +154,7 @@ footer {
     size: 35px;
 }
 
-#fridge-direction {
+.direction-button {
     border-radius: 10px;
     background-color: white;
     display: flex;

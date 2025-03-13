@@ -1,55 +1,13 @@
-function writeFridges() {
-    // define a variable for collection "Frisdges" in datastore
-    var fridgesRef = db.collection("fridges");
-
-    fridgesRef.add({
-        code: DEF,
-        name: "Downtown Eastside",
-        geolocation: {
-            lat: 49.282166872982415,
-            lng: -123.10561440000001
-        }
-    })
-    var contentsRef = fridgesRef.collection("contents");
-
-    contentsRef.add({
-        details: "2 bananas",
-        tinmestamp: firebase.firestore.FieldValue.serverTimestamp() // time when the food was donated
-    })
-
-    contentsRef.add({
-        details: "1 liter milk",
-        tinmestamp: firebase.firestore.FieldValue.serverTimestamp() // time when the food was donated
-    })
-
-    fridgesRef.add({
-        code: DEF,
-        name: "Kensington-Cedar Cottage",
-        geolocation: {
-            lat: 49.24910810831875,
-            lng: -123.06473884232807
-        }
-    })
-    var contentsRef = fridgesRef.collection("contents");
-
-    contentsRef.add({
-        details: "2 bananas",
-        tinmestamp: firebase.firestore.FieldValue.serverTimestamp() // time when the food was donated
-    })
-
-    contentsRef.add({
-        details: "1 liter milk",
-        tinmestamp: firebase.firestore.FieldValue.serverTimestamp() // time when the food was donated
-    })
-
-}
 
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("fridgeliststemplate"); // Retrieve the HTML element with the ID "fridgeliststemplate" and store it in the cardTemplate variable. 
-
+    navigator.geolocation.getCurrentPosition(function(position) {
+        let userLat = position.coords.latitude;  //gets users current position (may be wonky)
+        let userLng = position.coords.longitude;
+  });
     db.collection(collection).get()   //the collection called "fridges"
         .then(allFridges => {
             //var i = 1;  //Optional: if you want to have a unique ID for each fridge
@@ -57,7 +15,17 @@ function displayCardsDynamically(collection) {
                 var docID = doc.id;
                 console.log(docID);
                 var title = doc.data().name;       // get value of the fridge "name" key
-                var fridgeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
+                var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
+
+               var fridge = db.collection(collection).doc(doc.id).get() 
+                .then(function(fridge) { //gets geolocation of fridge from db
+                  let address = fridge.data().geolocation; //assigns it to address
+                  console.log(address);
+                //let cleanaddress = address.replace(/° [NW]/g, ''); //cleans the lat lng of any unnessary chars
+                //  let [tarlat, tarlng] = address.split(','); // splits lat lng into their own respective variables
+                let { latitude: tarlat, longitude: tarlng } = fridge.data().geolocation || {};
+        console.log(`Fridge at: ${tarlat}, ${tarlng}`);
+            });
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 //update title and text and image
