@@ -46,33 +46,16 @@
   <div id="favourites">
     <h1> Your Favourite Fridges</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
+      <div class="col" id="favourites-go-here">
+        <div id="favourites-template" class="d-none">
+          <img src="./images/f1.png" class="card-img-top" id="f-image" alt="Photo of Fridge">
           <div class="card-body">
-            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
+            <h5 class="card-title" style="font-size: 20pt;" id="fridge-title">Fridge Name!</h5>
             <p class="card-text">Address of fridge with link to open directions in google maps.</p>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
-          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
-          <div class="card-body">
-            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
-            <p class="card-text">Address of fridge with link to open directions in google maps.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./images/f1.png" class="card-img-top" alt="Photo of Fridge">
-          <div class="card-body">
-            <h5 class="card-title" style="font-size: 20pt;">Fridge Name!</h5>
-            <p class="card-text">Address of fridge with link to open directions in google maps.</p>
-          </div>
-        </div>
-      </div>
+      
 
     </div>
   </div>
@@ -87,7 +70,7 @@
   <script src="./scripts/firebaseAPI_BBY28.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
-  <!-- <script src="./scripts/script.js"></script> -->
+  <script src="./scripts/favourites.js"></script>
 
 </body>
 
