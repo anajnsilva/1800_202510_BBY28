@@ -98,10 +98,6 @@ footer {
    
 }
 
-#fridgelist-container {
-    padding-top: 100px;
-    margin:0px;
-}
 .imgs img {
     object-fit: cover;
     width: 100%;
@@ -135,7 +131,15 @@ footer {
 #imgs img {
     height: 180px;
 }
+#fridgebrowse-fridgecard {
+    padding: 5px;
+    width: 100%;
+}
 
+#seefridge {
+    display:flex;
+    flex-direction: row-reverse;
+}
 #desc {
     padding: 1em;
     font-size: 15pt;

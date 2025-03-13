@@ -58,7 +58,6 @@ function displayCardsDynamically(collection) {
                 console.log(docID);
                 var title = doc.data().name;       // get value of the fridge "name" key
                 var fridgeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 //update title and text and image
