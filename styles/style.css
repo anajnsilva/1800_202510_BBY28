@@ -157,7 +157,6 @@ footer {
 .direction-button {
     border-radius: 10px;
     background-color: white;
-    display: flex;
     align-items: center;
 }
 
