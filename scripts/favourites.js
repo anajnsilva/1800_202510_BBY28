@@ -23,7 +23,7 @@ function populateFavourites() {
                                     if (fridge.exists) {
                                         let fridgeData = fridge.data(); // retrieves data from document
 
-                                        let docID = fridgeData.id
+                                        let docID = fridgeData.name
                                         // get's html template
                                         let cardTemplate = document.getElementById("favourites-template");
 

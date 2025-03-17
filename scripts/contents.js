@@ -1,22 +1,26 @@
+
+//Function to convert timestamp to seconds
 function toDateTime(secs) {
     var t = new Date(1970, 0, 1); // Epoch
     t.setSeconds(secs);
     return t;
 }
+
+//Fucnction to display data from fridge sub-collection contents on content page
 // contentID added for second parameter when user adding new items
 function addContentToPage(contentItem, contentID) {
-    let item = contentItem.details;
-    let timestamp = contentItem.timestamp;
+    let item = contentItem.details; // grabs the name of the item
+    let timestamp = contentItem.timestamp; // grabs the timestamp of the item
 
     let date = toDateTime(timestamp.seconds); // convert the timestamp to seconds
-    let newcard = document.querySelector('.fridge-item-card').cloneNode(true);
+    let newcard = document.querySelector('.fridge-item-card').cloneNode(true); // clone template to create an item card per document in the content collection
 
-    newcard.classList.remove('d-none');
+    newcard.classList.remove('d-none'); // removes class d-none so that card displays on page
     newcard.setAttribute("content-id", contentID); // store the content ID in the html to reference it later when removing
-    newcard.querySelector('.fridge-item-title').innerHTML = item;
-    newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    newcard.querySelector('.fridge-item-title').innerHTML = item; // adds name of food item to card
+    newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // adds timestamp to item card
 
-    document.querySelector('#fridge-content-container').appendChild(newcard);
+    document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
 }
 
 function displayFridgeInfo() {
@@ -26,54 +30,55 @@ function displayFridgeInfo() {
 
     db.collection("fridges")
         .doc(ID)
-        .get()
+        .get() // grabs fridge document for the specific fridge page
         .then(doc => {
-            let fridgeData = doc.data();
-            let title = fridgeData.name;
+            let fridgeData = doc.data(); // grabs data from fridge document
+            let title = fridgeData.name; // grabs fridge name from fridge document
 
             //let content = doc.data().details;
             //only populate title of the fridges
-            document.querySelector(".h5").innerHTML = title;
+            document.querySelector(".h5").innerHTML = title; // replaces heading with fridge name
 
         });
 
     db.collection("fridges")
         .doc(ID)
         .collection("contents")
-        .get()
+        .get() // grabs the contents sub-collection from the fridge document 
         .then(docs => {
             docs.forEach(doc => {
-                let contentItem = doc.data();
+                let contentItem = doc.data(); // grabs the data for each document in the contents subcollection
 
-                addContentToPage(contentItem, doc.id); // having it content ID 
+                addContentToPage(contentItem, doc.id); // calls previous function to add the item and its ID to the page.
             })
         })
 }
 displayFridgeInfo();
 
+// Function to add new content items added by users into the database 
 function addContentToDatabase() {
 
-    let newItem = document.getElementById('donate-input').value;
+    let newItem = document.getElementById('donate-input').value; // grabs the item text input created by the user
 
-    let params = new URL(window.location.href);
-    let ID = params.searchParams.get("docID");
+    let params = new URL(window.location.href); 
+    let ID = params.searchParams.get("docID"); // gets the fridge document ID
 
-    let date = new Date()
+    let date = new Date() // creates new date object
 
-    let contentItem = {
+    let contentItem = { // creates new object with the corresponding key value pairs from the contents collection
         details: newItem,
         timestamp: {
             seconds: parseInt(date / 1000)
         }
     }
 
-    db.collection("fridges")
+    db.collection("fridges") 
         .doc(ID)
         .collection("contents")
         .doc()
-        .set(contentItem)
+        .set(contentItem) // creates new document inside the contents collectin with the corresponding item information
         .then(() => {
-            addContentToPage(contentItem)
+            addContentToPage(contentItem) // calls the function to create and display an item content card for the newly created item
         }).catch(_ => {
             alert("An error has occurred");
         })
