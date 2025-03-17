@@ -27,72 +27,27 @@ function displayFridgeInfo() {
         .doc(ID)
         .get()
         .then(doc => {
-            let Fridgecode = doc.data().code;
-            console.log(Fridgecode);
-            let title = doc.data().name;
-        .then(doc => {
             let fridgeData = doc.data();
             let title = fridgeData.name;
 
             //let content = doc.data().details;
+            // only populate title, and image
+            document.querySelector(".h5").innerHTML = title;
 
-            var fridge = db.collection("fridges").doc(doc.id).get()
-                .then(function (fridge) { //gets geolocation of fridge from db
+        });
 
-                    //let cleanaddress = address.replace(/° [NW]/g, ''); //cleans the lat lng of any unnessary chars
-                    //  let [tarlat, tarlng] = address.split(','); // splits lat lng into their own respective variables
-                    let { latitude: tarlat, longitude: tarlng } = fridge.data().geolocation || {};
-                    console.log(`Fridge at: ${tarlat}, ${tarlng}`);
-                    let address = reverseGeocode(tarlat, tarlng);
-                    // only populate title, and image
-                    document.querySelector(".h5").innerHTML = title;
-                    document.querySelector(".adsress").innerHTML = address;
-                });
-        }
-        )
-};
-displayFridgeInfo();
+    db.collection("fridges")
+        .doc(ID)
+        .collection("contents")
+        .get()
+        .then(docs => {
+            docs.forEach(doc => {
+                let contentItem = doc.data();
 
-
-function reverseGeocode(lat, lng) {
-
-    const apiKey = AIzaSyDFRHchEyckYqeuZJNUADcAVbYZpsnC83w;
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'OK') {
-                const address = data.results[0].formatted_address;
-                document.getElementById('address').innerText = address;
-            } else {
-                console.log('Geocoding failed: ' + data.status);
-            }
+                addContentToPage(contentItem);
+            })
         })
-        .catch(error => console.log('Error:', error));
 }
-let fridgeData = doc.data();
-let title = fridgeData.name;
-
-//let content = doc.data().details;
-
-// only populate title, and image
-document.querySelector(".h5").innerHTML = title;
-
-
-
-db.collection("fridges")
-    .doc(ID)
-    .collection("contents")
-    .get()
-    .then(docs => {
-        docs.forEach(doc => {
-            let contentItem = doc.data();
-
-            addContentToPage(contentItem);
-        })
-    })
-
 displayFridgeInfo();
 
 function addContentToDatabase() {
@@ -121,7 +76,4 @@ function addContentToDatabase() {
         }).catch(_ => {
             alert("An error has occurred");
         })
-
-
 }
-
