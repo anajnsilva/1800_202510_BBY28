@@ -3,15 +3,16 @@ function toDateTime(secs) {
     t.setSeconds(secs);
     return t;
 }
-
-function addContentToPage(contentItem) {
+// contentID added for second parameter when user adding new items
+function addContentToPage(contentItem, contentID) { 
     let item = contentItem.details;
     let timestamp = contentItem.timestamp;
 
-    let date = toDateTime(timestamp.seconds);
+    let date = toDateTime(timestamp.seconds); // convert the timestamp to seconds
     let newcard = document.querySelector('.fridge-item-card').cloneNode(true);
 
     newcard.classList.remove('d-none');
+    newcard.setAttribute("content-id", contentID); // store the content ID in the html to reference it later when removing
     newcard.querySelector('.fridge-item-title').innerHTML = item;
     newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
@@ -31,7 +32,7 @@ function displayFridgeInfo() {
             let title = fridgeData.name;
 
             //let content = doc.data().details;
-            // only populate title, and image
+            //only populate title of the fridges
             document.querySelector(".h5").innerHTML = title;
 
         });
@@ -44,7 +45,7 @@ function displayFridgeInfo() {
             docs.forEach(doc => {
                 let contentItem = doc.data();
 
-                addContentToPage(contentItem);
+                addContentToPage(contentItem, doc.id); // having it content ID 
             })
         })
 }
@@ -77,3 +78,33 @@ function addContentToDatabase() {
             alert("An error has occurred");
         })
 }
+
+//remove item from the fridge contents page
+document.getElementById("fridge-content-container").addEventListener("click", (event) => {
+    if (event.target.classList.contains("take-button")) {
+        let item = event.target.closest("li");
+        console.log(item);
+
+        let contentID = item.getAttribute("content-id");
+        if (contentID) {
+            let params = new URL(window.location.href);
+            let fridgeID = params.searchParams.get("docID"); // grabing the fridge ID from the url
+
+            db.collection("fridges")
+                .doc(fridgeID)
+                .collection("contents")
+                .doc(contentID)
+                .delete()
+                .then(() => {
+                    console.log(`Item with ID ${contentID} deleted from Firestore`);
+                    item.remove(); // Remove from DOM after successful delete
+                })
+                .catch((error) => {
+                    console.error("Error deleting item:", error);
+                });
+        }
+    }
+});
+
+
+
