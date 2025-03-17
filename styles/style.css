@@ -193,3 +193,8 @@ footer {
 .timestamp-template i{
     float: left;
 }
+
+#donate-input {
+    font-size: 14pt;
+    width: 100%;
+}
