@@ -23,6 +23,7 @@ function populateFavourites() {
                                     if (fridge.exists) {
                                         let fridgeData = fridge.data(); // retrieves data from document
 
+                                        let docID = fridgeData.id
                                         // get's html template
                                         let cardTemplate = document.getElementById("favourites-template");
 
@@ -35,8 +36,9 @@ function populateFavourites() {
                                         //update title and text and image
                                         newcard.querySelector('#fridge-title').innerHTML = fridgeData.name;
                                         newcard.querySelector('#f-image').src = `./images/${fridgeData.code}.png`; //Example: NV01.png
-
+                                        newcard.querySelector('a').href = "contents.html?docID=" + docID;
                                         document.getElementById("favourites-go-here").appendChild(newcard);
+                                        
                                     } else {
                                         console.error(`Fridge ${favourite} was not found`);
                                     }
