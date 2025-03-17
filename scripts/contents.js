@@ -80,24 +80,27 @@ function addContentToDatabase() {
 }
 
 //remove item from the fridge contents page
+//pointing to the fridge content container and trigger a function when click
 document.getElementById("fridge-content-container").addEventListener("click", (event) => {
     if (event.target.classList.contains("take-button")) {
-        let item = event.target.closest("li");
-        console.log(item);
+        // click event target the element that have class conatin "take button"
+        let item = event.target.closest("li"); // assign closet <li> contain the clicked take button to item
 
-        let contentID = item.getAttribute("content-id");
+
+        let contentID = item.getAttribute("content-id"); // grab the content ID from the attribute added in addContentToPage function
+        // if contentID exist
         if (contentID) {
             let params = new URL(window.location.href);
             let fridgeID = params.searchParams.get("docID"); // grabing the fridge ID from the url
 
-            db.collection("fridges")
-                .doc(fridgeID)
-                .collection("contents")
-                .doc(contentID)
-                .delete()
+            db.collection("fridges") // go in the Fridge collection in database
+                .doc(fridgeID) // go to the fridge with specified ID 
+                .collection("contents") // go to the contents collection of that fridge
+                .doc(contentID) // go to the content with the ID stored in the attibute
+                .delete() // delete it when button was clicked
                 .then(() => {
-                    console.log(`Item with ID ${contentID} deleted from Firestore`);
-                    item.remove(); // Remove from DOM after successful delete
+                    console.log(`Item with ID ${contentID} deleted from Firestore`); //log it
+                    item.remove(); // Remove from html after successful delete
                 })
                 .catch((error) => {
                     console.error("Error deleting item:", error);
