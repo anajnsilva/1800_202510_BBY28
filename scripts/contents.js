@@ -34,10 +34,11 @@ function displayFridgeInfo() {
         .then(doc => {
             let fridgeData = doc.data(); // grabs data from fridge document
             let title = fridgeData.name; // grabs fridge name from fridge document
-
+            let address = fridgeData.address;
             //let content = doc.data().details;
             //only populate title of the fridges
-            document.querySelector(".h5").innerHTML = title; // replaces heading with fridge name
+            document.querySelector('.h5').innerHTML = title; // replaces heading with fridge name
+            document.querySelector('.address').innerHTML = "Address: " + address; // display address
 
         });
 
@@ -122,6 +123,20 @@ document.getElementById("fridge-content-container").addEventListener("click", (e
 
     }
 );
+// adding address to database
+function addAddress(fridgeID, address) {
+    db.collection('fridges').doc(fridgeID).update({
+        address : address
+    });
+}
+addAddress('downtown eastside', '29 West Hastings Street');
+addAddress('Kensington-Cedar Cottage', '4040 Victoria Drive');
+addAddress('Kitsilano', '3066 West 13th Ave');
+addAddress('Mount Pleasant', '273 East 4th Ave');
+addAddress('Riley Park', '3718 Main Street');
+addAddress('Kerrisdale', '2490 W 37th Ave');
+addAddress('West Point Grey','4405 W 8th Ave');
+
 
 
 
