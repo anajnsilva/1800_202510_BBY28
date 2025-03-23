@@ -61,7 +61,7 @@ function addContentToDatabase() {
 
     let newItem = document.getElementById('donate-input').value; // grabs the item text input created by the user
 
-    let params = new URL(window.location.href); 
+    let params = new URL(window.location.href);
     let ID = params.searchParams.get("docID"); // gets the fridge document ID
 
     let date = new Date() // creates new date object
@@ -73,7 +73,7 @@ function addContentToDatabase() {
         }
     }
 
-    db.collection("fridges") 
+    db.collection("fridges")
         .doc(ID)
         .collection("contents")
         .doc()
@@ -121,12 +121,12 @@ document.getElementById("fridge-content-container").addEventListener("click", (e
         })
     }
 
-    }
+}
 );
 // adding address to database
 function addAddress(fridgeID, address) {
     db.collection('fridges').doc(fridgeID).update({
-        address : address
+        address: address
     });
 }
 addAddress('downtown eastside', '29 West Hastings Street');
@@ -135,7 +135,7 @@ addAddress('Kitsilano', '3066 West 13th Ave');
 addAddress('Mount Pleasant', '273 East 4th Ave');
 addAddress('Riley Park', '3718 Main Street');
 addAddress('Kerrisdale', '2490 W 37th Ave');
-addAddress('West Point Grey','4405 W 8th Ave');
+addAddress('West Point Grey', '4405 W 8th Ave');
 
 
 
