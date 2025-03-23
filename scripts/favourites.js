@@ -37,7 +37,8 @@ function populateFavourites() {
 
                                         //update title and text and image
                                         newcard.querySelector('#fridge-title').innerHTML = fridgeData.name;
-                                        newcard.querySelector('#f-image').src = `./images/${fridgeData.code}.png`; //Example: NV01.png
+                                        newcard.querySelector('#f-image').src = `./images/${fridgeData.code}.png`; 
+                                        newcard.querySelector('#fridge-address').innerHTML = fridgeData.address;
                                         newcard.querySelector('a').href = "contents.html?docID=" + docID;
                                         document.getElementById("favourites-go-here").appendChild(newcard);
                                         
