@@ -30,6 +30,8 @@ function populateFavourites() {
                                         // clone into new element
                                         let newcard = cardTemplate.cloneNode(true);
 
+                                        newcard.querySelector('.remove-favourite').id = docID;
+
                                         // remove display none from the class list of the new html
                                         newcard.classList.remove('d-none');
 
@@ -58,3 +60,26 @@ function populateFavourites() {
 }
 
 populateFavourites();
+
+let myModal = new bootstrap.Modal(document.getElementById('remove-confirm'), {});
+
+// Function to remove favourite fridges from favourites page
+function removeFavourite(fridgeDocID) {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            let currentUser = db.collection("users").doc(user.uid);
+            myModal.show();
+            document.getElementById('remove-confirm-btn').addEventListener("click", () => {
+
+                currentUser.update({
+                    favourites: firebase.firestore.FieldValue.arrayRemove(fridgeDocID)
+                })
+                .then(function () {
+                    location.reload();
+                })
+            })
+        }
+
+    })
+
+}
