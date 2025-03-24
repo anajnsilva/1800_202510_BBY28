@@ -19,9 +19,9 @@ function displayCardsDynamically(collection) {
                 var title = doc.data().name;       // get value of the fridge "name" key
                 var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
       
-        let address = doc.data().geolocation; //assigns it to address
-        let {latitude, longitude} = address;
-        let distance = getDistance(userLat, userLng, latitude, longitude);
+            let address = doc.data().geolocation; //assigns latitude and longitude to address
+            let {latitude, longitude} = address; //splits up latitude and longitude into their respective values
+            let distance = getDistance(userLat, userLng, latitude, longitude); //calls getDistance with parameters of user position and fridge position
    
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
