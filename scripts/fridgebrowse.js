@@ -7,6 +7,23 @@ function displayCardsDynamically(collection) {
     navigator.geolocation.getCurrentPosition(function (position) {
         let userLat = position.coords.latitude;  //gets users current position (may be wonky)
         let userLng = position.coords.longitude;
+ 
+  
+    db.collection(collection).get()   //the collection called "fridges"
+        .then(allFridges => {
+            
+            //var i = 1;  //Optional: if you want to have a unique ID for each fridge
+            allFridges.forEach(doc => { //iterate thru each doc
+                var docID = doc.id;
+                console.log(docID);
+                var title = doc.data().name;       // get value of the fridge "name" key
+                var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
+      
+            let address = doc.data().geolocation; //assigns latitude and longitude to address
+            let {latitude, longitude} = address; //splits up latitude and longitude into their respective values
+            let distance = getDistance(userLat, userLng, latitude, longitude); //calls getDistance with parameters of user position and fridge position
+   
+                let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
         db.collection(collection).get()   //the collection called "fridges"
             .then(allFridges => {
@@ -56,7 +73,10 @@ function displayCardsDynamically(collection) {
                 })
             })
     });
+});
+    });
 }
+    
 
 displayCardsDynamically("fridges");  //input param is the name of the collection
 
