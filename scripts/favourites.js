@@ -30,12 +30,15 @@ function populateFavourites() {
                                         // clone into new element
                                         let newcard = cardTemplate.cloneNode(true);
 
+                                        newcard.querySelector('.remove-favourite').id = docID;
+
                                         // remove display none from the class list of the new html
                                         newcard.classList.remove('d-none');
 
                                         //update title and text and image
                                         newcard.querySelector('#fridge-title').innerHTML = fridgeData.name;
-                                        newcard.querySelector('#f-image').src = `./images/${fridgeData.code}.png`; //Example: NV01.png
+                                        newcard.querySelector('#f-image').src = `./images/${fridgeData.code}.png`; 
+                                        newcard.querySelector('#fridge-address').innerHTML = fridgeData.address;
                                         newcard.querySelector('a').href = "contents.html?docID=" + docID;
                                         document.getElementById("favourites-go-here").appendChild(newcard);
                                         
@@ -58,3 +61,26 @@ function populateFavourites() {
 }
 
 populateFavourites();
+
+let myModal = new bootstrap.Modal(document.getElementById('remove-confirm'), {});
+
+// Function to remove favourite fridges from favourites page
+function removeFavourite(fridgeDocID) {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            let currentUser = db.collection("users").doc(user.uid);
+            myModal.show();
+            document.getElementById('remove-confirm-btn').addEventListener("click", () => {
+
+                currentUser.update({
+                    favourites: firebase.firestore.FieldValue.arrayRemove(fridgeDocID)
+                })
+                .then(function () {
+                    location.reload();
+                })
+            })
+        }
+
+    })
+
+}
