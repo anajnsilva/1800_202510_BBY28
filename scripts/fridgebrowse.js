@@ -8,7 +8,6 @@ function displayCardsDynamically(collection) {
         let userLat = position.coords.latitude;  //gets users current position (may be wonky)
         let userLng = position.coords.longitude;
 
-
         db.collection(collection).get()   //the collection called "fridges"
             .then(allFridges => {
 
@@ -36,7 +35,8 @@ function displayCardsDynamically(collection) {
                     newcard.querySelector('.fridge-image').src = `./images/${fridgeCode}.png`; //Example: NV01.png
                     newcard.querySelector('a').href = "contents.html?docID=" + docID;
                     newcard.querySelector('.fridge-distance').innerHTML = distance.toFixed(2) + "km";
-                    enableSeefridge(distance, newcard);
+
+                   // enableSeefridge(distance, newcard);
                     document.getElementById(collection + "-go-here").appendChild(newcard);
 
                     // display favourited fridges with red hearts
