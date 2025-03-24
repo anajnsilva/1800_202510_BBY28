@@ -15,7 +15,6 @@ function displayCardsDynamically(collection) {
                 //var i = 1;  //Optional: if you want to have a unique ID for each fridge
                 allFridges.forEach(doc => { //iterate thru each doc
                     var docID = doc.id;
-                    console.log(docID);
                     var title = doc.data().name;       // get value of the fridge "name" key
                     var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
 
@@ -29,7 +28,7 @@ function displayCardsDynamically(collection) {
 
                     let button = newcard.querySelector('button');
                     button.setAttribute("data-docid", docID);
-                    
+
                     newcard.querySelector('button').onclick = favourite_button_onclick;
 
                     //update title and text and image
@@ -37,6 +36,7 @@ function displayCardsDynamically(collection) {
                     newcard.querySelector('.fridge-image').src = `./images/${fridgeCode}.png`; //Example: NV01.png
                     newcard.querySelector('a').href = "contents.html?docID=" + docID;
                     newcard.querySelector('.fridge-distance').innerHTML = distance.toFixed(2) + "km";
+                    enableSeefridge(distance, newcard);
                     document.getElementById(collection + "-go-here").appendChild(newcard);
 
                     // display favourited fridges with red hearts
@@ -83,11 +83,11 @@ function deg2rad(deg) {
 }
 
 
-function favourite_button_onclick () {
+function favourite_button_onclick() {
     let fridgeDocID = this.dataset.docid;
     let isfav = this.dataset.isfav
 
-    if(!isfav) {
+    if (!isfav) {
         addFavourite(fridgeDocID, this)
     } else {
         removeFavourite(fridgeDocID, this)
@@ -101,19 +101,19 @@ function addFavourite(fridgeDocID, currentBtn) {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             let currentUser = db.collection("users").doc(user.uid);
-                currentUser.update({
-                    favourites: firebase.firestore.FieldValue.arrayUnion(fridgeDocID)
+            currentUser.update({
+                favourites: firebase.firestore.FieldValue.arrayUnion(fridgeDocID)
+            })
+                .then(function () {
+                    let heartID = 'save-' + fridgeDocID;
+                    document.getElementById(heartID).src = "../images/favourite-heart-after.png";
+                    currentBtn.setAttribute("data-isfav", "true");
                 })
-                    .then(function () {
-                        let heartID = 'save-' + fridgeDocID;
-                        document.getElementById(heartID).src = "../images/favourite-heart-after.png";
-                        currentBtn.setAttribute("data-isfav", "true");
-                    })
 
-            }
+        }
 
-        })
-    }
+    })
+}
 
 
 // Function to remove favourite fridges
@@ -135,3 +135,31 @@ function removeFavourite(fridgeDocID, currentBtn) {
     })
 
 }
+
+function enableSeefridge(distance, newcard) {
+    let seefridgeSpan = newcard.querySelector('span[data-bs-toggle="popover"]'); // Get the parent span
+    let fridgeBtn = newcard.querySelector('#seefridge'); // Get the actual button
+
+    if (seefridgeSpan && fridgeBtn) {
+        if (distance > 20) {
+            // Disable the button interaction visually
+            fridgeBtn.style.pointerEvents = "none";
+            fridgeBtn.style.opacity = "0.5"; // Make it visually disabled
+            fridgeBtn.style.cursor = "not-allowed"; // Change cursor to not-allowed
+
+            // Update popover content
+            seefridgeSpan.setAttribute('data-bs-content', 'This fridge is too far. You must be within 2km to see fridge contents!');
+
+            let popover = bootstrap.Popover.getInstance(seefridgeSpan);
+            if (!popover) {
+                new bootstrap.Popover(seefridgeSpan);
+            }
+        } else {
+            // Re-enable the button interaction
+            fridgeBtn.style.pointerEvents = "auto";
+            fridgeBtn.style.opacity = "1"; // Restore full opacity
+            fridgeBtn.style.cursor = "pointer"; // Change cursor back to pointer
+        }
+    }
+}
+

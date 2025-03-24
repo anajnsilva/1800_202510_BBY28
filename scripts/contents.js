@@ -136,7 +136,3 @@ addAddress('Mount Pleasant', '273 East 4th Ave');
 addAddress('Riley Park', '3718 Main Street');
 addAddress('Kerrisdale', '2490 W 37th Ave');
 addAddress('West Point Grey', '4405 W 8th Ave');
-
-
-
-
