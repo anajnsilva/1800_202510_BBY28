@@ -1,5 +1,5 @@
 //Distance Target
-var distanceLimit = 15;
+var distanceLimit = 1360;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -15,7 +15,10 @@ function addContentToPage(contentItem, contentID) {
     let timestamp = contentItem.timestamp; // grabs the timestamp of the item
 
     let date = toDateTime(timestamp.seconds); // convert the timestamp to seconds
+    let params = new URL(window.location.href); //get URL of search bar
+
     let newcard = document.querySelector('.fridge-item-card').cloneNode(true); // clone template to create an item card per document in the content collection
+    let distance = params.searchParams.get("distance");
 
     newcard.classList.remove('d-none'); // removes class d-none so that card displays on page
     newcard.setAttribute("content-id", contentID); // store the content ID in the html to reference it later when removing
@@ -23,12 +26,11 @@ function addContentToPage(contentItem, contentID) {
     newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // adds timestamp to item card
 
     document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
-   
-    // Initialize popovers for the new card's buttons (if present)
-    let popoverElements = newcard.querySelectorAll('[data-bs-toggle="popover"]');
-    popoverElements.forEach(popoverElement => {
-        new bootstrap.Popover(popoverElement); // Initialize popover for each element
-    });
+
+    if (distance) {
+        enableTake(distance);
+
+    }
 }
 
 function displayFridgeInfo() {
@@ -64,9 +66,12 @@ function displayFridgeInfo() {
         })
     if (distance) {
         enableDonate(parseFloat(distance));
-        enableTake(parseFloat(distance));
     } else {
         console.warn("Distance not found in URL.");
+
+
+
+
     }
 }
 displayFridgeInfo();
@@ -182,12 +187,12 @@ function enableTake(distance) {
 
     // Select all dynamically generated "Take" buttons
     let takeBtn = document.querySelectorAll('.take-button');
-    
+
     // Iterate over each take button
     takeBtn.forEach(button => {
 
         let btnWrapper = button.closest('.take-btn-wrapper'); // Find the closest wrapper for each button
-        
+
         if (distance > distanceLimit) { // Disable if distance is greater than 2km
             button.disabled = true;
             button.style.opacity = "0.5";
@@ -208,6 +213,7 @@ function enableTake(distance) {
             button.disabled = false;
             button.style.opacity = "1";
             button.style.cursor = "pointer";
+
         }
     });
 }
