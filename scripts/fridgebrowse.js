@@ -7,6 +7,7 @@ function displayCardsDynamically(collection) {
     navigator.geolocation.getCurrentPosition(function (position) {
         let userLat = position.coords.latitude;  //gets users current position (may be wonky)
         let userLng = position.coords.longitude;
+        console.log(userLat, userLng);
        
         db.collection(collection).get()   //the collection called "fridges"
             .then(allFridges => {
@@ -34,7 +35,7 @@ function displayCardsDynamically(collection) {
                     //update title and text and image
                     newcard.querySelector('.fridge-name').innerHTML = title;
                     newcard.querySelector('.fridge-image').src = `./images/${fridgeCode}.png`; //Example: NV01.png
-                    newcard.querySelector('a').href = "contents.html?docID=" + docID;
+                    newcard.querySelector('a').href = "contents.html?docID=" + docID + "&distance=" + distance;
                     newcard.querySelector('.fridge-distance').innerHTML = distance.toFixed(2) + "km";
                     // enableSeefridge(distance, newcard);
                     document.getElementById(collection + "-go-here").appendChild(newcard);
@@ -135,30 +136,5 @@ function removeFavourite(fridgeDocID, currentBtn) {
 
 }
 
-function enableSeefridge(distance, newcard) {
-    let seefridgeSpan = newcard.querySelector('span[data-bs-toggle="popover"]'); // Get the parent span
-    let fridgeBtn = newcard.querySelector('#seefridge'); // Get the actual button
 
-    if (seefridgeSpan && fridgeBtn) {
-        if (distance > 20) {
-            // Disable the button interaction visually
-            fridgeBtn.style.pointerEvents = "none";
-            fridgeBtn.style.opacity = "0.5"; // Make it visually disabled
-            fridgeBtn.style.cursor = "not-allowed"; // Change cursor to not-allowed
-
-            // Update popover content
-            seefridgeSpan.setAttribute('data-bs-content', 'This fridge is too far. You must be within 2km to see fridge contents!');
-
-            let popover = bootstrap.Popover.getInstance(seefridgeSpan);
-            if (!popover) {
-                new bootstrap.Popover(seefridgeSpan);
-            }
-        } else {
-            // Re-enable the button interaction
-            fridgeBtn.style.pointerEvents = "auto";
-            fridgeBtn.style.opacity = "1"; // Restore full opacity
-            fridgeBtn.style.cursor = "pointer"; // Change cursor back to pointer
-        }
-    }
-}
 

@@ -1,3 +1,5 @@
+//Distance Target
+var distanceLimit = 15;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -21,11 +23,18 @@ function addContentToPage(contentItem, contentID) {
     newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // adds timestamp to item card
 
     document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
+   
+    // Initialize popovers for the new card's buttons (if present)
+    let popoverElements = newcard.querySelectorAll('[data-bs-toggle="popover"]');
+    popoverElements.forEach(popoverElement => {
+        new bootstrap.Popover(popoverElement); // Initialize popover for each element
+    });
 }
 
 function displayFridgeInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
+    let distance = params.searchParams.get("distance");
     console.log(ID);
 
     db.collection("fridges")
@@ -53,6 +62,12 @@ function displayFridgeInfo() {
                 addContentToPage(contentItem, doc.id); // calls previous function to add the item and its ID to the page.
             })
         })
+    if (distance) {
+        enableDonate(parseFloat(distance));
+        enableTake(parseFloat(distance));
+    } else {
+        console.warn("Distance not found in URL.");
+    }
 }
 displayFridgeInfo();
 
@@ -136,3 +151,63 @@ addAddress('Mount Pleasant', '273 East 4th Ave');
 addAddress('Riley Park', '3718 Main Street');
 addAddress('Kerrisdale', '2490 W 37th Ave');
 addAddress('West Point Grey', '4405 W 8th Ave');
+
+function enableDonate(distance) {
+    let popoverWrapper = document.querySelector('#donate-btn-wrapper'); // Get the parent span
+    let donateBtn = document.querySelector('#donate-btn'); // Get the actual button
+
+    if (popoverWrapper && donateBtn) {
+        if (distance > distanceLimit) {
+            // Disable the button interaction visually
+            donateBtn.disabled = true;
+            donateBtn.style.opacity = "0.5"; // Make it visually disabled
+
+            // Update popover content
+            popoverWrapper.setAttribute('data-bs-content', 'This fridge is too far. You must be within 2km to donate to this fridge!');
+
+            let popover = bootstrap.Popover.getInstance(popoverWrapper);
+            if (!popover) {
+                new bootstrap.Popover(popoverWrapper);
+            }
+        } else {
+            // Re-enable the button interaction
+            donateBtn.disabled = false;
+            donateBtn.style.opacity = "1"; // Restore full opacity
+            donateBtn.style.cursor = "pointer"; // Change cursor back to pointer
+        }
+    }
+}
+
+function enableTake(distance) {
+
+    // Select all dynamically generated "Take" buttons
+    let takeBtn = document.querySelectorAll('.take-button');
+    
+    // Iterate over each take button
+    takeBtn.forEach(button => {
+
+        let btnWrapper = button.closest('.take-btn-wrapper'); // Find the closest wrapper for each button
+        
+        if (distance > distanceLimit) { // Disable if distance is greater than 2km
+            button.disabled = true;
+            button.style.opacity = "0.5";
+            button.style.cursor = "not-allowed";
+
+            // popover message
+            if (btnWrapper) {
+                // Update the popover content dynamically
+                btnWrapper.setAttribute('data-bs-content', 'You must be within 2km to take items from this fridge.');
+
+                // Initialize popover if not already initialized
+                let popover = bootstrap.Popover.getInstance(btnWrapper);
+                if (!popover) {
+                    new bootstrap.Popover(btnWrapper);
+                }
+            }
+        } else {
+            button.disabled = false;
+            button.style.opacity = "1";
+            button.style.cursor = "pointer";
+        }
+    });
+}
