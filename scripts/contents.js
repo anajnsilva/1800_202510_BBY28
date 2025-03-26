@@ -1,5 +1,5 @@
 //Distance Target
-var distanceLimit = 1360;
+var distanceLimit = 7;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -28,7 +28,7 @@ function addContentToPage(contentItem, contentID) {
     document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
 
     if (distance) {
-        enableTake(distance);
+        disableTake(distance);
 
     }
 }
@@ -65,7 +65,7 @@ function displayFridgeInfo() {
             })
         })
     if (distance) {
-        enableDonate(parseFloat(distance));
+        disableDonate(parseFloat(distance));
     } else {
         console.warn("Distance not found in URL.");
 
@@ -157,7 +157,7 @@ addAddress('Riley Park', '3718 Main Street');
 addAddress('Kerrisdale', '2490 W 37th Ave');
 addAddress('West Point Grey', '4405 W 8th Ave');
 
-function enableDonate(distance) {
+function disableDonate(distance) {
     let popoverWrapper = document.querySelector('#donate-btn-wrapper'); // Get the parent span
     let donateBtn = document.querySelector('#donate-btn'); // Get the actual button
 
@@ -183,7 +183,7 @@ function enableDonate(distance) {
     }
 }
 
-function enableTake(distance) {
+function disableTake(distance) {
 
     // Select all dynamically generated "Take" buttons
     let takeBtn = document.querySelectorAll('.take-button');
