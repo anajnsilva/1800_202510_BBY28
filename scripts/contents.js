@@ -1,3 +1,5 @@
+//Distance Target
+var distanceLimit = 7;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -13,7 +15,10 @@ function addContentToPage(contentItem, contentID) {
     let timestamp = contentItem.timestamp; // grabs the timestamp of the item
 
     let date = toDateTime(timestamp.seconds); // convert the timestamp to seconds
+    let params = new URL(window.location.href); //get URL of search bar
+
     let newcard = document.querySelector('.fridge-item-card').cloneNode(true); // clone template to create an item card per document in the content collection
+    let distance = params.searchParams.get("distance");
 
     newcard.classList.remove('d-none'); // removes class d-none so that card displays on page
     newcard.setAttribute("content-id", contentID); // store the content ID in the html to reference it later when removing
@@ -21,11 +26,17 @@ function addContentToPage(contentItem, contentID) {
     newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // adds timestamp to item card
 
     document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
+
+    if (distance) {
+        disableTake(distance);
+
+    }
 }
 
 function displayFridgeInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
+    let distance = params.searchParams.get("distance");
     console.log(ID);
 
     db.collection("fridges")
@@ -53,6 +64,15 @@ function displayFridgeInfo() {
                 addContentToPage(contentItem, doc.id); // calls previous function to add the item and its ID to the page.
             })
         })
+    if (distance) {
+        disableDonate(parseFloat(distance));
+    } else {
+        console.warn("Distance not found in URL.");
+
+
+
+
+    }
 }
 displayFridgeInfo();
 
@@ -149,4 +169,65 @@ console.log(ID);
     } else {
         console.error("No docID found in the URL");
     }
+}
+
+function disableDonate(distance) {
+    let popoverWrapper = document.querySelector('#donate-btn-wrapper'); // Get the parent span
+    let donateBtn = document.querySelector('#donate-btn'); // Get the actual button
+
+    if (popoverWrapper && donateBtn) {
+        if (distance > distanceLimit) {
+            // Disable the button interaction visually
+            donateBtn.disabled = true;
+            donateBtn.style.opacity = "0.5"; // Make it visually disabled
+
+            // Update popover content
+            popoverWrapper.setAttribute('data-bs-content', 'This fridge is too far. You must be within 2km to donate to this fridge!');
+
+            let popover = bootstrap.Popover.getInstance(popoverWrapper);
+            if (!popover) {
+                new bootstrap.Popover(popoverWrapper);
+            }
+        } else {
+            // Re-enable the button interaction
+            donateBtn.disabled = false;
+            donateBtn.style.opacity = "1"; // Restore full opacity
+            donateBtn.style.cursor = "pointer"; // Change cursor back to pointer
+        }
+    }
+}
+
+function disableTake(distance) {
+
+    // Select all dynamically generated "Take" buttons
+    let takeBtn = document.querySelectorAll('.take-button');
+
+    // Iterate over each take button
+    takeBtn.forEach(button => {
+
+        let btnWrapper = button.closest('.take-btn-wrapper'); // Find the closest wrapper for each button
+
+        if (distance > distanceLimit) { // Disable if distance is greater than 2km
+            button.disabled = true;
+            button.style.opacity = "0.5";
+            button.style.cursor = "not-allowed";
+
+            // popover message
+            if (btnWrapper) {
+                // Update the popover content dynamically
+                btnWrapper.setAttribute('data-bs-content', 'You must be within 2km to take items from this fridge.');
+
+                // Initialize popover if not already initialized
+                let popover = bootstrap.Popover.getInstance(btnWrapper);
+                if (!popover) {
+                    new bootstrap.Popover(btnWrapper);
+                }
+            }
+        } else {
+            button.disabled = false;
+            button.style.opacity = "1";
+            button.style.cursor = "pointer";
+
+        }
+    });
 }
