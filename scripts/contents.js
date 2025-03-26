@@ -136,3 +136,17 @@ addAddress('Mount Pleasant', '273 East 4th Ave');
 addAddress('Riley Park', '3718 Main Street');
 addAddress('Kerrisdale', '2490 W 37th Ave');
 addAddress('West Point Grey', '4405 W 8th Ave');
+
+
+function sendFridgeId() {
+    let params = new URL(window.location.href); // Get URL of the current page
+    let ID = params.searchParams.get("docID"); // Get the value for the key "docID"
+
+console.log(ID);
+
+    if (ID) {
+        window.location.href = `map.html?docID=${ID}`; // Redirect to map.html with the docID as a query parameter
+    } else {
+        console.error("No docID found in the URL");
+    }
+}
