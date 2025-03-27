@@ -171,16 +171,14 @@ addAddress('West Point Grey', '4405 W 8th Ave');
 
 
 function sendFridgeId() {
-    let params = new URL(window.location.href); // Get URL of the current page
-    let ID = params.searchParams.get("docID"); // Get the value for the key "docID"
+    let params = new URL(window.location.href); 
+    let ID = params.searchParams.get("docID"); 
 
     console.log(ID);
 
-    if (ID) {
-        window.location.href = `map.html?docID=${ID}`; // Redirect to map.html with the docID as a query parameter
-    } else {
-        console.error("No docID found in the URL");
-    }
+    
+        window.location.href = `map.html?docID=${ID}`; 
+    
 }
 
 function disableDonate(distance) {

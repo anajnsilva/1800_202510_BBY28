@@ -29,21 +29,6 @@ function FridgeLocation() {
         });
     }
     
-// db.collection("fridges").doc(ID).get().then((doc) => {
-//     if (doc.exists) {
-//         console.log("Document data:", doc.data());
-//         let address = doc.data().geolocation; //assigns latitude and longitude to address
-//         let { latitude, longitude } = address; //splits up latitude and longitude into their respective values
-//         console.log(address);
-//         showMap(address);   //call showMap with "end" location
-//     } else {
-//         // doc.data() will be undefined in this case
-//         console.log("No such document!");
-//     }
-// }).catch((error) => {
-//     console.log("Error getting document:", error);
-// });
-// }
 }
 FridgeLocation();
 
