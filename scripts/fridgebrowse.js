@@ -8,7 +8,7 @@ function displayCardsDynamically(collection) {
         let userLat = position.coords.latitude;  //gets users current position (may be wonky)
         let userLng = position.coords.longitude;
         console.log(userLat, userLng);
-       
+
         db.collection(collection).get()   //the collection called "fridges"
             .then(allFridges => {
 
@@ -30,11 +30,11 @@ function displayCardsDynamically(collection) {
                         });
                     }
                     FridgeLocation();
-                    
+
                     let address = doc.data().geolocation; //assigns latitude and longitude to address
                     let { latitude, longitude } = address; //splits up latitude and longitude into their respective values
                     let distance = getDistance(userLat, userLng, latitude, longitude); //calls getDistance with parameters of user position and fridge position
-                   
+
                     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                     newcard.querySelector('.favourite-button').id = 'save-' + docID;
@@ -122,10 +122,23 @@ function addFavourite(fridgeDocID, currentBtn) {
                     currentBtn.setAttribute("data-isfav", "true");
                 })
 
+            // Checks user's notification settings, and if enabled, adds them to the frdiges watchers
+            db.collection("users").doc(user.uid).get().then(doc => {
+                let userData = doc.data();
+                console.log(userData);
+                if (userData.notifyDonate == true) {
+                    let fridge = db.collection("fridges").doc(fridgeDocID);
+                    fridge.update({
+                        usersWatching: firebase.firestore.FieldValue.arrayUnion(user.uid)
+                    })
+    
+                }
+            })
+           
         }
+})
 
-    })
-}
+    }
 
 
 // Function to remove favourite fridges
@@ -142,6 +155,10 @@ function removeFavourite(fridgeDocID, currentBtn) {
 
                     currentBtn.removeAttribute("data-isfav");
                 })
+            let fridge = db.collection("fridges").doc(fridgeDocID);
+            fridge.update({
+                usersWatching: firebase.firestore.FieldValue.arrayRemove(user.uid)
+            })
         }
 
     })

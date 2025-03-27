@@ -4,7 +4,6 @@ function populateUserInfo() {
         // Check if user is signed in:
         if (user) {
 
-            
             currentUser = db.collection("users").doc(user.uid)
             
             currentUser.get()
@@ -12,8 +11,7 @@ function populateUserInfo() {
                     
                     let userName = userDoc.data().name;
                     let userDonateNotification = userDoc.data().notifyDonate;
-                    let userTakeNotification = userDoc.data().notifyTake;
-                
+                                    
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
                     }
@@ -22,12 +20,6 @@ function populateUserInfo() {
                         document.getElementById("notif-donations").checked = true;
                     } else {
                         document.getElementById("notif-donations").checked = false;
-                    }
-
-                    if (userTakeNotification == true) {
-                        document.getElementById("notif-taken").checked = true;
-                    } else {
-                        document.getElementById("notif-taken").checked = false;
                     }
                 })
         } else {
@@ -48,22 +40,16 @@ function editUserInfo() {
 function saveUserInfo() {
 
     userName = document.getElementById('nameInput').value; 
-    if (document.getElementById('notif-donations').checked = true) {
+
+    if (document.getElementById('notif-donations').checked == true) {
         userDonateNotification = true;
     } else {
         userDonateNotification = false;
     }     
 
-    if (document.getElementById('notif-taken').checked = true) {
-        userTakeNotification = true;
-    }  else {
-        userTakeNotification = false;
-    }
-
     currentUser.update({
         name: userName,
         notifyDonate: userDonateNotification,
-        notifyTake: userTakeNotification
     })
 
 

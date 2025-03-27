@@ -1,5 +1,5 @@
 //Distance Target
-var distanceLimit = 7;
+var distanceLimit = 700;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -68,10 +68,6 @@ function displayFridgeInfo() {
         disableDonate(parseFloat(distance));
     } else {
         console.warn("Distance not found in URL.");
-
-
-
-
     }
 }
 displayFridgeInfo();
@@ -100,8 +96,24 @@ function addContentToDatabase() {
         .set(contentItem) // creates new document inside the contents collectin with the corresponding item information
         .then(() => {
             addContentToPage(contentItem) // calls the function to create and display an item content card for the newly created item
-        }).catch(_ => {
+
+            let notification = {
+                message: `${newItem} has been added to ${ID}`
+            }
+
+            console.log(notification);
+            
+            // Creates notification in the subcollection of users watching that fridge
+            db.collection("fridges").doc(ID).get().then(fridge => {
+                let fridgeData = fridge.data();
+                fridgeData.usersWatching.forEach(user => {
+                    db.collection("users").doc(user).collection("notifications").doc().set(notification)
+                })
+            })
+
+        }).catch(err => {
             alert("An error has occurred");
+            console.error(err);
         })
 }
 
@@ -162,7 +174,7 @@ function sendFridgeId() {
     let params = new URL(window.location.href); // Get URL of the current page
     let ID = params.searchParams.get("docID"); // Get the value for the key "docID"
 
-console.log(ID);
+    console.log(ID);
 
     if (ID) {
         window.location.href = `map.html?docID=${ID}`; // Redirect to map.html with the docID as a query parameter

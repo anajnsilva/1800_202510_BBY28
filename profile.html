@@ -75,8 +75,6 @@
               <input type="checkbox" id="notif-donations">
               <label for="donations">Items are donated to one of my favourite fridges</label>
               </br>
-              <input type="checkbox" id="notif-taken">
-              <label for="taken">Items are taken from one of my favourite fridges</label>
                 </div>
               </fieldset>
               <div class="d-flex justify-content-end mt-5">
@@ -163,14 +161,28 @@
 
   <nav id="footerPlaceholder"></nav>
 
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Notifications</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <button type="button" id="dismiss-notifis" onclick=dismissNotifications()>Dismiss All Notifications</button>
+      <div class="notification-template">
+        <div class="notif-body"></div>
+      </div>
+    </div>
+  </div>
 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
+ 
   <script src="./scripts/firebaseAPI_BBY28.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/profile.js"></script> 
+  <script src="./scripts/notifications.js"></script>
 
 </body>
 

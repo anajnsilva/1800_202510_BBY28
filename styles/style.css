@@ -198,3 +198,10 @@ footer {
     font-size: 14pt;
     width: 100%;
 }
+
+/* notification off canvas styling */
+
+.notif-body {
+    padding: 0.5em;
+    margin: 10px
+}

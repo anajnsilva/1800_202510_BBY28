@@ -1,33 +1,41 @@
-
 <nav class="navbar pd-0 navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../images/bell.png" alt="Notifications Icon" width="35" height="35"
-          class="d-inline-block align-text-top"></a>
-      <img src="./images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../landingpage.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../favourites.html">Favourites</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../fridgebrowse.html">Browse Fridges</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../aboutus.html">About Us</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <a class="btn btn-outline-success" href="../before_login.html">Logout</a>
+  <div class="container-fluid">
+    <a class="navbar-brand position-relative" data-bs-toggle="offcanvas" aria-controls="offcanvasExample"
+      data-bs-target="#offcanvasExample" role="button" id="notif-bell">
+
+      <img src="../images/bell.png" alt="Notifications Icon" width="35" height="35"
+        class="d-inline-block align-text-top">
+      <span class="position-absolute mt-2 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
+        id="red-badge">
+        <span class="visually-hidden">New alerts</span>
+      </span>
+    </a>
+    <img src="./images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../landingpage.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../favourites.html">Favourites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../fridgebrowse.html">Browse Fridges</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../aboutus.html">About Us</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <a class="btn btn-outline-success" href="../before_login.html">Logout</a>
       </div>
 
-      </div>
-    </div>
-  </nav>
+      <!-- Off canvas content box for notifications -->
 
+
+
+</nav>

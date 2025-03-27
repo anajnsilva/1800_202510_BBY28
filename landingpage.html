@@ -39,7 +39,7 @@
 </head>
 
 <body>
-
+  
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
@@ -47,6 +47,7 @@
 
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
+
 
   <!-- Body of the page-->
   <div class="container-fluid text-dark p-5">
@@ -56,13 +57,15 @@
       <p>Quote of the day: The food you eat can be either the safest and most powerful form of medicine or the slowest
         form of poison</p>
       <p class="lead mb-4">
-        </pc>Introducing the <strong>Community Fridge App</strong>! It’s a smart, easy-to-use tool that connects people
+        </pc>Introducing the <strong>Community Fridge App</strong>! It’s a smart, easy-to-use tool that connects
+        people
         for a good cause. With this app, you can:</p>
       <ul>
         <li><strong>Donate</strong>: Easily contribute food items to your local community fridge.</li>
         <li><strong>Track</strong>: Keep tabs on what’s available in the fridge to avoid food waste and ensure you get
           what you need.</li>
-        <li><strong>Connect</strong>: Join a community of generous individuals working together to reduce food waste and
+        <li><strong>Connect</strong>: Join a community of generous individuals working together to reduce food waste
+          and
           support each other.</li>
       </ul>
       <p class="lead mb-4">Whether you're donating or picking up, the BeCool makes it simple and efficient. Join us in
@@ -70,9 +73,9 @@
     </div>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a href="./fridgebrowse.html" class="btn btn-info" role="button">See Available Fridges</a>
-      </div>
+    </div>
     <div class="container p-5" id="guideline">
-      <h3 class="display-4">Quick Donating Guideline</h3> 
+      <h3 class="display-4">Quick Donating Guideline</h3>
       <hr>
       <img class="d-block mx-auto mb-" src="./images/foodguide.png" alt="" width="420" height="400">
     </div>
@@ -80,6 +83,19 @@
   </div>
 
   <nav id="footerPlaceholder"></nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Notifications</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <button type="button" id="dismiss-notifis" onclick=dismissNotifications()>Dismiss All Notifications</button>
+      <div class="notification-template">
+        <div class="notif-body"></div>
+      </div>
+    </div>
+  </div>
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
@@ -89,6 +105,7 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/landingpage.js"></script>
+  <script src="./scripts/notifications.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
