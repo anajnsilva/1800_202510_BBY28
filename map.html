@@ -4,6 +4,7 @@
 <head>
   <title>My BCIT Project</title>
   <meta name="comp1800 template" content="My 1800 App">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -44,40 +45,8 @@
   <!-- Your HTML Layout go here -->
   <!------------------------------>
   <!-- Stuff for body goes here -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/images/bell.png" alt="Notifications Icon" width="35" height="30"
-          class="d-inline-block align-text-top"></a>
-      <img src="/images/becoolgs.png" alt="Logo" height="35" class="d-inline-block align-text-top">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./landingpage.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./favourites.html">Favourites</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Lists</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">My fridge</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./aboutus.html">About Us</a>
-          </li>
+  <nav id="navbarPlaceholder"></nav>
 
-        </ul>
-
-      </div>
-    </div>
-  </nav>
-  </div>
-  </div>
 
   <div class="container">
     <h1>Mapbox API</h1>
@@ -93,18 +62,7 @@
     </div>
 </div>
   
-  <footer class="footer">
-    <nav class="navbar sticky-bottom">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="./landingpage.html"><img src="/images/home.png" alt="Home Icon" width="35" height="35"
-            class="d-inline-block align-text-top"></a>
-        <a class="navbar-brand" href="./profile.html"><img src="/images/user.png" alt="User Icon" width="35" height="35"
-            class="d-inline-block align-text-top"></a>
-        <a class="navbar-brand" href="#"><img src="/images/setting.png" alt="Settings Icon" width="35" height="35"
-            class="d-inline-block align-text-top"></a>
-      </div>
-    </nav>
-  </footer>
+<nav id="footerPlaceholder"></nav>
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
@@ -112,7 +70,9 @@
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
   <script src="./scripts/firebaseAPI_BBY28.js"></script>
-  <script src="./scripts/contents.js"></script>
+  <!-- <script src="./scripts/contents.js"></script> -->
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
   <script src="./scripts/map.js"> </script>
   
   
