@@ -95,25 +95,24 @@
   </div>
 
 
-  <div class="mx-auto p-2 my-4 border border-white text-center"
-    style="width: 90vw; height: 60vh; background-color: whitesmoke; ">
+  <div class="mx-auto p-2 my-4 border border-white text-center content-body-container">
     <div class="h5"> Fridge Name</div>
     <div class="address"> Address: </div>
-    <div class="container text-center " style="width: 100%; height: 88%;">
+    <div class="container text-center content-container">
 
-      <div class="row row-cols-2" style="height: 100%;">
+      <div class="row row-cols-2 content-innerbox">
         <div class="col-12">
-          <ul class="list-group " id="fridge-content-container">
+          <ul class="list-group" id="fridge-content-container">
             <li class="list-group-item fridge-item-card d-none">
               <div class="d-flex fridge-item">
 
                 <div class="px-2 fridge-item-title"> Item Name </div>
 
                 <div class="input-group input-group-take-btn">
-                  <span class="take-btn-wrapper d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                  <span class="take-btn-wrapper d-inline-block" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="hover focus"
                     data-bs-content="This fridge is too far. You must be within 2km to see fridge contents!">
-                    <button type="button" class="take-button btn-outline-secondary btn my-2 border-black"
-                      style="background-color: rgba(240, 234, 214, 0.692);">Take</button>
+                    <button type="button" class="take-button btn-outline-secondary btn my-2 border-black">Take</button>
                   </span>
 
                 </div>
@@ -131,22 +130,23 @@
     </div>
 
     <div class="d-flex" id="content-buttons">
-      <div class="row-1 " style=" width: 50%; background-color: #54c6ebff;">
+      <div class="row-1 ">
         <button type="button" class=" btn-outline-secondary btn my-2 border-black"
-          style="background-color: rgba(240, 234, 214, 0.692);" onclick="location.href='fridgebrowse.html';">Back to
+           onclick="location.href='fridgebrowse.html';">Back to
           Browse</button>
       </div>
-      <div class="row-1 " style=" width: 50%; background-color: #54c6ebff;">
-        <span id="donate-btn-wrapper" class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+      <div class="row-1 ">
+        <span id="donate-btn-wrapper" class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+          data-bs-trigger="hover focus"
           data-bs-content="This fridge is too far. You must be within 2km to see fridge contents!">
           <button type="button" class=" btn-outline-secondary btn my-2 border-black" id="donate-btn"
             data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            style="background-color: rgba(240, 234, 214, 0.692);">Donate items</button>
+            >Donate items</button>
         </span>
       </div>
-      <div class="row-1 " style=" width: 50%; background-color: #54c6ebff;">
-        <button type="button" class="direction-button btn-outline-secondary btn my-2 border-black" height="20px"
-          width="15px" onclick="sendFridgeId()" style="background-color: rgba(240, 234, 214, 0.692);"> Directions
+      <div class="row-1 ">
+        <button type="button" class="direction-button btn-outline-secondary btn my-2 border-black"
+           onclick="sendFridgeId()"> Directions
         </button>
       </div>
     </div>
@@ -162,10 +162,10 @@
     <div class="offcanvas-body">
       <button type="button" id="dismiss-notifis" onclick=dismissNotifications()>Dismiss All Notifications</button>
       <div id="notif-container">
-      <div class="notification-template">
-        <div class="notif-body"></div>
-      </div> 
-    </div>
+        <div class="notification-template">
+          <div class="notif-body"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -177,8 +177,8 @@
   <script src="./scripts/script.js"></script>
   <script src="./scripts/direction.js"></script>
   <script src="./scripts/configDir.js"></script>
- <script src="./scripts/contents.js"></script>
- <script src="./scripts/notifications.js"></script>
+  <script src="./scripts/contents.js"></script>
+  <script src="./scripts/notifications.js"></script>
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->

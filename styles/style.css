@@ -2,7 +2,7 @@ body {
     background-color: rgba(240, 234, 214, 0.692);
 }
 
-footer {
+.footer {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     background-color: #54c6ebff;
@@ -21,6 +21,46 @@ footer {
     font-size: medium;
 }
 
+/* Befor Login page */
+
+#beforeloginimg {
+    width: 200px;
+}
+
+#beforelogin-body{
+    padding-bottom: 50px ;
+}
+
+.social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.footerbeforelogin {
+    border-top: 1px solid gray;
+    padding-top: 5%;
+    margin: 10px;
+}
+
+/* login page */
+.login-prompt {
+    padding-top: 5%;
+}
+#firebaseui-auth-container {
+    padding-top: 50px;
+    padding-bottom: 130px;
+}
+/* landing page */
+
+#landingpage-list {
+    list-style-type: none;
+}
+
+#see-aval-fridge {
+    font-size: 15pt;
+}
 /* Profile page CSS */
 
 #profile-title {
@@ -99,6 +139,7 @@ footer {
 }
 
 .imgs img {
+    height: 200px;
     object-fit: cover;
     width: 100%;
     overflow: hidden;
@@ -142,16 +183,25 @@ footer {
     font-size: 15pt;
 }
 
-#search-bar .input-group-text,
+/* #search-bar .input-group-text,
 #search-bar input {
     font-size: 1.5em !important;
-}
+} */
 
 .fave-btn {
     background: none;
     border: none;
     padding: 0;
     size: 35px;
+    
+
+}
+
+#seefridge {
+    background-color:rgba(240, 234, 214, 0.692) ;
+}
+.favourite-button {
+    width: 50px;
 }
 
 .direction-button {
@@ -160,7 +210,16 @@ footer {
     align-items: center;
 }
 
+#fridges-go-here {
+    margin-bottom: 100px;
+}
+
 /* Contents page CSS */
+.content-body-container {
+    width: 90vw;
+    height: 60vh;
+    background-color: whitesmoke ;
+}
 
 .fridge-item-title {
     align-self: center;
@@ -170,12 +229,20 @@ footer {
 .take-button {
     font-size: 14pt;
     color: black;
+    background-color:rgba(240, 234, 214, 0.692);
+}
+
+#content-buttons div {
+    width: 50%;
+    background-color: #54c6ebff ;
 }
 
 #content-buttons button {
     font-size: 14pt;
     color: black;
     margin:0.5em;
+    height: 65px;
+    background-color: rgba(240, 234, 214, 0.692);
 }
 
 .h5 {
@@ -198,6 +265,15 @@ footer {
     font-size: 14pt;
     width: 100%;
 }
+.content-container{
+    width: 100%;
+    height: 88%;
+}
+.content-innerbox {
+    height: 100%;
+    overflow: auto;
+}
+
 
 /* notification off canvas styling */
 

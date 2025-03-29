@@ -4,7 +4,6 @@
 <head>
   <title>Fridge Browse</title>
   <meta name="comp1800 template" content="My 1800 App">
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -45,8 +44,14 @@
   <!-- Stuff for body goes here -->
   <nav id="navbarPlaceholder"></nav>
 
-  <div >
-    <h1>Available Fridges</h1>
+  <div class="input-group mb-3" id="search-bar">
+    <div class="mx-auto my-auto">
+      <span class="input-group-text" id="basic-addon1">Search</span>
+
+    </div>
+    <input type="text" class="form-control" placeholder="Fridges near me...." aria-label="search"
+      aria-describedby="basic-addon1">
+    <span class="input-group-text" id="basic-addon1">Filter</span>
   </div>
   <template id="fridgeliststemplate">
     <ul class="list-group" id="fridgebrowse-fridgecard">
@@ -54,10 +59,9 @@
       <li class="list-group-item" class="d-flex justify-content-between" id="desc">
         <span class="fridge-name" style="flex-grow: 2 ;"></span>
         <span class="fridge-distance"> </span>
-        
-          <a id="seefridge" class="btn-outline-secondary btn my-2 border-black"
-            style="background-color: rgba(240, 234, 214, 0.692)">See
-            Fridge</a>
+
+        <a id="seefridge" class="btn-outline-secondary btn my-2 border-black">See
+          Fridge</a>
         <button class="fave-btn" height="35px" width="35px"><img class="favourite-button"
             src="../images/favourite-heart-before.png" alt="favourite" width="50px"></button>
 
@@ -74,28 +78,14 @@
 
 
   <nav id="footerPlaceholder"></nav>
-
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Notifications</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <button type="button" id="dismiss-notifis" onclick=dismissNotifications()>Dismiss All Notifications</button>
-      <div class="notification-template">
-        <div class="notif-body"></div>
-      </div>
-    </div>
-  </div>
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
- 
   <script src="./scripts/firebaseAPI_BBY28.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/fridgebrowse.js"></script>
-  <script src="./scripts/notifications.js"></script>
+
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
 
