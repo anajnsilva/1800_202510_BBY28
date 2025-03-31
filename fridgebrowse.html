@@ -44,25 +44,19 @@
   <!-- Stuff for body goes here -->
   <nav id="navbarPlaceholder"></nav>
 
-  <div class="input-group mb-3" id="search-bar">
-    <div class="mx-auto my-auto">
-      <span class="input-group-text" id="basic-addon1">Search</span>
-
+    <div class="mx-auto my-auto browse-title">
+      <h1>Community Fridges</h1>
     </div>
-    <input type="text" class="form-control" placeholder="Fridges near me...." aria-label="search"
-      aria-describedby="basic-addon1">
-    <span class="input-group-text" id="basic-addon1">Filter</span>
-  </div>
   <template id="fridgeliststemplate">
     <ul class="list-group" id="fridgebrowse-fridgecard">
       <li class="list-group-item" id="imgs"> <img class="fridge-image" src=" ... " alt=" ..." height="200px" /> </li>
       <li class="list-group-item" class="d-flex justify-content-between" id="desc">
-        <span class="fridge-name" style="flex-grow: 2 ;"></span>
-        <span class="fridge-distance"> </span>
+        <span class="fridge-name browse-bar-item" style="flex-grow: 2 ;"></span>
+        <span class="fridge-distance browse-bar-item"> </span>
 
-        <a id="seefridge" class="btn-outline-secondary btn my-2 border-black">See
+        <a id="seefridge" class="btn-outline-secondary btn my-2 border-black browse-bar-item">See
           Fridge</a>
-        <button class="fave-btn" height="35px" width="35px"><img class="favourite-button"
+        <button class="fave-btn browse-bar-item" height="35px" width="35px"><img class="favourite-button"
             src="../images/favourite-heart-before.png" alt="favourite" width="50px"></button>
 
 

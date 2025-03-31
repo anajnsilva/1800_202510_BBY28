@@ -170,17 +170,30 @@ body {
 /* fridge browsing page CSS */
 
 #imgs img {
-    height: 180px;
-    
-}
-#fridgebrowse-fridgecard {
-    padding: 5px;
     width: 100%;
+    height: 200px;
+    object-fit: cover;    
+}
+
+#fridgebrowse-fridgecard {
+    padding: 0.3em;
+    width: 100%;
+    margin: 0.3em;
 }
 
 #desc {
-    padding: 1em;
+    margin-top: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
     font-size: 15pt;
+
+}
+
+.browse-bar-item {
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /* #search-bar .input-group-text,
@@ -193,13 +206,22 @@ body {
     border: none;
     padding: 0;
     size: 35px;
-    
+}
 
+.browse-title h1{
+    margin-top: 0.5em;
+    text-align: center;
 }
 
 #seefridge {
-    background-color:rgba(240, 234, 214, 0.692) ;
+    background-color:rgba(101, 205, 240, 0.801) ;
+    color:black;
+    height: 38px;
+    width: 100.08px;
+    align-items: center;
+    text-wrap: nowrap;
 }
+
 .favourite-button {
     width: 50px;
 }
