@@ -130,12 +130,20 @@ body {
     font-size: 26pt;
 }
 
+#favourites-template a {
+    color: black;
+    background-color: rgba(101, 205, 240, 0.801);
+}
 
+#fave-card-text {
+    background-color: aliceblue;
+    margin-bottom: 10px;
+    padding: 0.5em;
+}
 
 #favourites img {
     height: 300px;
     object-fit: cover;
-   
 }
 
 .imgs img {
@@ -217,7 +225,6 @@ body {
     background-color:rgba(101, 205, 240, 0.801) ;
     color:black;
     height: 38px;
-    width: 100.08px;
     align-items: center;
     text-wrap: nowrap;
 }
