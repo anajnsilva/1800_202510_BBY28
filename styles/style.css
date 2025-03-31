@@ -264,6 +264,7 @@ body {
 #content-buttons div {
     width: 50%;
     background-color: #54c6ebff ;
+    
 }
 
 #content-buttons button {
@@ -297,6 +298,7 @@ body {
 .content-container{
     width: 100%;
     height: 88%;
+    padding-bottom: 20px;;
 }
 .content-innerbox {
     height: 100%;
