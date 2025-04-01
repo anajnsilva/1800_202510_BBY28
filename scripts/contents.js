@@ -109,7 +109,10 @@ function addContentToDatabase() {
                 fridgeData.usersWatching.forEach(user => {
                     db.collection("users").doc(user).collection("notifications").doc().set(notification)
                 })
+                displayBadge();
             })
+
+            document.getElementById("donate-input").value = "";
 
         }).catch(err => {
             alert("An error has occurred");
