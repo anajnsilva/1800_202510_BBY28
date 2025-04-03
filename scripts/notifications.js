@@ -1,6 +1,4 @@
 // Function to display red badge on bell icon when there are user notifications
-
-// Function to display red bade on bell icon when there are user notifications
 function displayBadge() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -24,7 +22,6 @@ function displayBadge() {
 } displayBadge();
 
 // Function to populate user notifications in the off canvas element
-
 function populateNotifications() {
 
         document.querySelectorAll(".notification-template.not-template").forEach(ele => {
@@ -56,7 +53,6 @@ function populateNotifications() {
 
 
 // Function for user to dismiss all notifications when clicking the dismiss button in the offcanvas element
-
 function dismissNotifications() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {

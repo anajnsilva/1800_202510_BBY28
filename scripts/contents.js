@@ -33,6 +33,7 @@ function addContentToPage(contentItem, contentID) {
     }
 }
 
+// Function that displays the details of the specified fridge on the contents page
 function displayFridgeInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
@@ -184,6 +185,7 @@ function sendFridgeId() {
     
 }
 
+// Function to disable donate feature if user is too far away
 function disableDonate(distance) {
     let popoverWrapper = document.querySelector('#donate-btn-wrapper'); // Get the parent span
     let donateBtn = document.querySelector('#donate-btn'); // Get the actual button
@@ -210,6 +212,7 @@ function disableDonate(distance) {
     }
 }
 
+// Function to disable take feature if user is too far away
 function disableTake(distance) {
 
     // Select all dynamically generated "Take" buttons

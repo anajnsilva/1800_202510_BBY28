@@ -2,6 +2,7 @@
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
+// Function to display the fridge cards for each fridge
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("fridgeliststemplate"); // Retrieve the HTML element with the ID "fridgeliststemplate" and store it in the cardTemplate variable. 
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -72,6 +73,7 @@ function displayCardsDynamically(collection) {
 
 displayCardsDynamically("fridges");  //input param is the name of the collection
 
+// Function to get distrance from the user to the fridge
 function getDistance(userLat, userLng, tarlat, tarlng) {
 
 
@@ -90,11 +92,12 @@ function getDistance(userLat, userLng, tarlat, tarlng) {
 
 }
 
+//Function to convert degrees to radians
 function deg2rad(deg) {
     return deg * (Math.PI / 180)
 }
 
-
+// Function to add fridge to user's favourites
 function favourite_button_onclick() {
     let fridgeDocID = this.dataset.docid;
     let isfav = this.dataset.isfav
@@ -108,7 +111,7 @@ function favourite_button_onclick() {
 
 
 
-//Function to add favourite fridges
+//Function to add favourite fridges to user's collection
 function addFavourite(fridgeDocID, currentBtn) {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -141,7 +144,7 @@ function addFavourite(fridgeDocID, currentBtn) {
     }
 
 
-// Function to remove favourite fridges
+// Function to remove favourite fridges from user's collection
 function removeFavourite(fridgeDocID, currentBtn) {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {

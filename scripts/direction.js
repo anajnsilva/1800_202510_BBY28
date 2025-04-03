@@ -1,16 +1,5 @@
 
-
-// db.collection(collection).get()   //the collection called "fridges"
-//         .then(allFridges => {
-//             //var i = 1;  //Optional: if you want to have a unique ID for each hike
-//             allFridges.forEach(doc => { //iterate thru each doc
-//                 var docID = doc.id;
-//                 console.log(docID);
-//                 var title = doc.data().name;       // get value of the fridge "name" key
-//                 var fridgeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-//             });
-//           });
-
+// Function for referall on other JS files
 function goDirection() {
     navigator.geolocation.getCurrentPosition(function(position) {
       let userLat = position.coords.latitude;  //gets users current position (may be wonky)
@@ -37,18 +26,9 @@ function goDirection() {
 
   }
 
+  // Function to calculate the distance from the user's current location to the fridge.
     function getDistance(userLat,userLng,tarlat,tarlng) {
 
-      // navigator.geolocation.getCurrentPosition(function(position) {
-      //   let userLat = position.coords.latitude;  //gets users current position (may be wonky)
-      //   let userLng = position.coords.longitude;
-      // });
-      // var fridge = db.collection("fridges").doc(ID).get() 
-      // .then(function(fridge) { //gets geolocation of fridge from db
-      //   let address = fridge.data().geolocation; //assigns it to address
-      //   let cleanaddress = address.replace(/° [NW]/g, ''); //cleans the lat lng of any unnessary chars
-      //   let [tarlat, tarlng] = cleanaddress.split(','); // splits lat lng into their own respective variables
-      // });
       var R = 6371; // Radius of the earth in km
       var dLat = deg2rad(tarlat-userLat);  // deg2rad below
       var dLon = deg2rad(tarlng-userLng); 

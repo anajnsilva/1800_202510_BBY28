@@ -1,5 +1,5 @@
 //----------------------------------------
-//  Your web app's Firebase configuration
+//  Firebase configuration
 //----------------------------------------
 var firebaseConfig = {
     apiKey: "AIzaSyCbqMbJJFC02AD8decxAvfPlpl1VXnv96s",
@@ -11,8 +11,8 @@ var firebaseConfig = {
 };
 
 //--------------------------------------------
-// initialize the Firebase app
-// initialize Firestore database if using it
+// initializes the Firebase app
+// initializes Firestore database
 //--------------------------------------------
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();

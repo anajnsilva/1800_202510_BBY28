@@ -1,4 +1,6 @@
-var currentUser;               
+var currentUser;  
+
+// Function to display the user's information
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -28,10 +30,9 @@ function populateUserInfo() {
         }
     });
 }
-
-
 populateUserInfo();
 
+// Function to edit the user's information on the user's collection document
 function editUserInfo() {
     
     document.getElementById('personalInfoFields').disabled = false;

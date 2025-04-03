@@ -1,6 +1,6 @@
 //---------------------------------------------------
-// This function loads the parts of your skeleton 
-// (navbar, footer, and other things) into html doc. 
+// This function loads the navbar and footer into
+// our html document
 //---------------------------------------------------
 function loadSkeleton() {
 
