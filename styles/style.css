@@ -312,3 +312,34 @@ body {
     padding: 0.5em;
     margin: 10px
 }
+
+#offcanvasExample {
+    background-color: rgb(192, 240, 255);
+}
+
+.offcanvas-title {
+    font-size: 24pt;
+    text-align: center;
+    align-content: center;
+}
+
+#dismiss-notifis {
+   font-size: 14pt;
+   font-weight:500;
+   padding: 0.5em;
+   background-color: #54c6ebff;
+}
+
+.notif-body {
+    font-size: 14pt;
+}
+
+#map-title {
+    text-align: center;
+    padding-top: 0.5em;
+    font-size: 22pt;
+}
+
+#map-body {
+    margin-bottom: 100px;
+}
