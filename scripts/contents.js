@@ -114,15 +114,17 @@ function addContentToDatabase() {
                     db.collection("users").doc(user).collection("notifications").doc().set(notification)
                 })
                 displayBadge();
+                location.reload();
             })
 
             document.getElementById("donate-input").value = "";
+            
 
         }).catch(err => {
             alert("An error has occurred");
             console.error(err);
         })
-        location.reload();
+        
        
 }
 
