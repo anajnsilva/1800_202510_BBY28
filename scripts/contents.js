@@ -31,6 +31,7 @@ function addContentToPage(contentItem, contentID) {
         disableTake(distance);
 
     }
+    location.reload();
 }
 
 // Function that displays the details of the specified fridge on the contents page
@@ -119,7 +120,7 @@ function addContentToDatabase() {
             alert("An error has occurred");
             console.error(err);
         })
-        location.reload();
+       
 }
 
 let myModal = new bootstrap.Modal(document.getElementById('remove-confirm'), {});
