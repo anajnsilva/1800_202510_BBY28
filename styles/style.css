@@ -350,3 +350,13 @@ body {
 #map-body {
     margin-bottom: 100px;
 }
+
+#map-back {
+    border-radius: 10px;
+    margin: 0.5em;
+    background-color: rgba(101, 205, 240, 0.801);
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+}

@@ -183,11 +183,12 @@ addAddress('West Point Grey', '4405 W 8th Ave');
 function sendFridgeId() {
     let params = new URL(window.location.href); 
     let ID = params.searchParams.get("docID"); 
+    let distance = params.searchParams.get("distance"); 
 
     console.log(ID);
 
     
-        window.location.href = `map.html?docID=${ID}`; 
+        window.location.href = `map.html?docID=${ID}&distance=${distance}`; 
     
 }
 

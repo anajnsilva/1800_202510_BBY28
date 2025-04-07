@@ -2,7 +2,8 @@
 function FridgeLocation() {
 
 
-    let ID = new URL(window.location.href).searchParams.get("docID");
+    var ID = new URL(window.location.href).searchParams.get("docID");
+
 
     console.log(ID);
     if (ID) {
@@ -198,4 +199,11 @@ async function getRoute(map, start, end) {
     console.log("End coordinates:", end);
     console.log("GeoJSON data:", geojson);
 
+}
+
+function goBack() {
+    let ID = new URL(window.location.href).searchParams.get("docID");
+    let distance = new URL(window.location.href).searchParams.get("distance");
+
+    window.location.href = `contents.html?docID=${ID}&distance=${distance}`;
 }
