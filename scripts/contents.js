@@ -26,12 +26,12 @@ function addContentToPage(contentItem, contentID) {
     newcard.querySelector('.timestamp').innerHTML = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // adds timestamp to item card
 
     document.querySelector('#fridge-content-container').appendChild(newcard); //adds iem card to content container
-
+    
     if (distance) {
         disableTake(distance);
 
     }
-    location.reload();
+    
 }
 
 // Function that displays the details of the specified fridge on the contents page
@@ -65,12 +65,14 @@ function displayFridgeInfo() {
 
                 addContentToPage(contentItem, doc.id); // calls previous function to add the item and its ID to the page.
             })
-        })
+        }) 
+        
     if (distance) {
         disableDonate(parseFloat(distance));
     } else {
         console.warn("Distance not found in URL.");
     }
+    
 }
 displayFridgeInfo();
 
@@ -120,6 +122,7 @@ function addContentToDatabase() {
             alert("An error has occurred");
             console.error(err);
         })
+        location.reload();
        
 }
 
