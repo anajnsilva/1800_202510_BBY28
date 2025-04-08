@@ -96,10 +96,9 @@ function addContentToDatabase() {
     db.collection("fridges")
         .doc(ID)
         .collection("contents")
-        .doc()
-        .set(contentItem) // creates new document inside the contents collectin with the corresponding item information
-        .then(() => {
-            addContentToPage(contentItem) // calls the function to create and display an item content card for the newly created item
+        .add(contentItem) // creates new document inside the contents collection with the corresponding item information
+        .then((docRef) => {
+            addContentToPage(contentItem, docRef.id) // calls the function to create and display an item content card for the newly created item
 
             let notification = {
                 message: `${newItem} has been added to ${ID}`
@@ -114,6 +113,7 @@ function addContentToDatabase() {
                     db.collection("users").doc(user).collection("notifications").doc().set(notification)
                 })
                 displayBadge();
+                
             })
 
             document.getElementById("donate-input").value = "";
@@ -122,7 +122,7 @@ function addContentToDatabase() {
             alert("An error has occurred");
             console.error(err);
         })
-        location.reload();
+        
        
 }
 
@@ -182,11 +182,12 @@ addAddress('West Point Grey', '4405 W 8th Ave');
 function sendFridgeId() {
     let params = new URL(window.location.href); 
     let ID = params.searchParams.get("docID"); 
+    let distance = params.searchParams.get("distance"); 
 
     console.log(ID);
 
     
-        window.location.href = `map.html?docID=${ID}`; 
+        window.location.href = `map.html?docID=${ID}&distance=${distance}`; 
     
 }
 
