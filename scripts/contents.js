@@ -1,5 +1,5 @@
 //Distance Target
-var distanceLimit = 7;
+var distanceLimit = 700;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
@@ -96,10 +96,9 @@ function addContentToDatabase() {
     db.collection("fridges")
         .doc(ID)
         .collection("contents")
-        .doc()
-        .set(contentItem) // creates new document inside the contents collectin with the corresponding item information
-        .then(() => {
-            addContentToPage(contentItem) // calls the function to create and display an item content card for the newly created item
+        .add(contentItem) // creates new document inside the contents collection with the corresponding item information
+        .then((docRef) => {
+            addContentToPage(contentItem, docRef.id) // calls the function to create and display an item content card for the newly created item
 
             let notification = {
                 message: `${newItem} has been added to ${ID}`
