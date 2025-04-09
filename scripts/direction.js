@@ -26,7 +26,7 @@ function getDistance(userLat, userLng, tarlat, tarlng) {
   var dLon = deg2rad(tarlng - userLng);
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+    Math.cos(deg2rad(userLat)) * Math.cos(deg2rad(tarlat)) *
     Math.sin(dLon / 2) * Math.sin(dLon / 2)
     ;
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
