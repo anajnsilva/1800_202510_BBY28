@@ -53,7 +53,6 @@ C:.
 |   map.html
 |   profile.html
 |   README.md
-|   skeleton.html
 |   template.html
 |
 +---.vscode
@@ -88,9 +87,7 @@ C:.
 |
 +---scripts
 |       authentication.js
-|       configDir.js
 |       contents.js
-|       direction.js
 |       favourites.js
 |       firebaseAPI_BBY28.js
 |       fridgebrowse.js
