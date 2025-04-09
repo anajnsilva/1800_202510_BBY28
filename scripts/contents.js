@@ -30,8 +30,7 @@ function addContentToPage(contentItem, contentID) {
     if (distance) {
         disableTake(distance);
 
-    }
-    
+    } 
 }
 
 // Function that displays the details of the specified fridge on the contents page
@@ -72,7 +71,6 @@ function displayFridgeInfo() {
     } else {
         console.warn("Distance not found in URL.");
     }
-    
 }
 displayFridgeInfo();
 
@@ -103,8 +101,6 @@ function addContentToDatabase() {
             let notification = {
                 message: `${newItem} has been added to ${ID}`
             }
-
-            console.log(notification);
             
             // Creates notification in the subcollection of users watching that fridge
             db.collection("fridges").doc(ID).get().then(fridge => {
@@ -183,9 +179,6 @@ function sendFridgeId() {
     let params = new URL(window.location.href); 
     let ID = params.searchParams.get("docID"); 
     let distance = params.searchParams.get("distance"); 
-
-    console.log(ID);
-
     
         window.location.href = `map.html?docID=${ID}&distance=${distance}`; 
     

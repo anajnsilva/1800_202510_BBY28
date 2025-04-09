@@ -5,7 +5,6 @@ function displayBadge() {
             db.collection("users").doc(user.uid).collection("notifications").get().then(docs => {
                 let badge = document.getElementById('red-badge');
 
-                console.log(docs.docs);
                 if (docs.docs.length > 0) {
                     console.log("removing d-none")
                     badge.classList.remove("d-none");
@@ -50,8 +49,6 @@ function populateNotifications() {
     })
 }
 
-
-
 // Function for user to dismiss all notifications when clicking the dismiss button in the offcanvas element
 function dismissNotifications() {
     firebase.auth().onAuthStateChanged(user => {
@@ -63,7 +60,6 @@ function dismissNotifications() {
                         console.log(doc.id, "deleted");
                     }).catch(e => console.error(e))
                 })
-
                 displayBadge();
                 populateNotifications();
             })

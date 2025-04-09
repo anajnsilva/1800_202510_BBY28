@@ -1,18 +1,14 @@
 // Function to grab the location of the specified fridge and invokes showMap function
 function FridgeLocation() {
 
-
     var ID = new URL(window.location.href).searchParams.get("docID");
 
-
-    console.log(ID);
     if (ID) {
         db.collection("fridges").doc(ID).get().then((doc) => {
             if (doc.exists) {
-                console.log("Document data:", doc.data());
+
                 let address = { longitude: doc.data().geolocation.longitude, latitude: doc.data().geolocation.latitude };
                 // let { latitude, longitude } = address; //splits up latitude and longitude into their respective values
-                console.log(address);
                 showMap(address);   //call showMap with "end" location
             } else {
                 // doc.data() will be undefined in this case
@@ -49,7 +45,6 @@ function showMap(address) {
                     lng: position.coords.longitude,
                     lat: position.coords.latitude
                 };
-                console.log(userCoords);
                 initializeMap(userCoords, address);
             }, (error) => {
                 console.warn("Geolocation error:", error);
@@ -65,9 +60,6 @@ function showMap(address) {
 
         var userLocation = [coords.lng, coords.lat];   //user's location 
         var address = [end.longitude, end.latitude];       //clicked location
-        console.log(coords);
-        console.log(end);
-
 
         mapboxgl.accessToken = 'pk.eyJ1Ijoib3JyNSIsImEiOiJja3cwYWo2b2w3cGk1MzFzMXkwaGU0eXcxIn0.OeBYTlCaeCY45IjTbh01sA';
         const map = new mapboxgl.Map({
@@ -136,8 +128,7 @@ function showPoint(map, point) {
 //           start and end:  arrays of [lng, lat] coordinates
 // -------------------------------------------------------------
 async function getRoute(map, start, end) {
-    console.log("Start coordinates:", start);
-    console.log("End coordinates:", end);
+
     const query = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/cycling/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
         { method: 'GET' }
@@ -145,7 +136,6 @@ async function getRoute(map, start, end) {
     const json = await query.json();
     const data = json.routes[0];
     const route = data.geometry.coordinates;
-    console.log("route is " + route);
     const geojson = {
         type: 'Feature',
         properties: {},
@@ -194,10 +184,6 @@ async function getRoute(map, start, end) {
     instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
         data.duration / 60
     )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
-
-    console.log("Start coordinates:", start);
-    console.log("End coordinates:", end);
-    console.log("GeoJSON data:", geojson);
 
 }
 

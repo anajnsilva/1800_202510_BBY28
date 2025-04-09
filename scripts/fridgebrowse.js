@@ -1,14 +1,10 @@
 
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
 // Function to display the fridge cards for each fridge
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("fridgeliststemplate"); // Retrieve the HTML element with the ID "fridgeliststemplate" and store it in the cardTemplate variable. 
     navigator.geolocation.getCurrentPosition(function (position) {
         let userLat = position.coords.latitude;  //gets users current position (may be wonky)
         let userLng = position.coords.longitude;
-        console.log(userLat, userLng);
 
         db.collection(collection).get()   //the collection called "fridges"
             .then(allFridges => {
@@ -16,7 +12,6 @@ function displayCardsDynamically(collection) {
                 //var i = 1;  //Optional: if you want to have a unique ID for each fridge
                 allFridges.forEach(doc => { //iterate thru each doc
                     var docID = doc.id;
-                    console.log(docID);
                     var title = doc.data().name;       // get value of the fridge "name" key
                     var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
 
@@ -76,7 +71,6 @@ displayCardsDynamically("fridges");  //input param is the name of the collection
 // Function to get distrance from the user to the fridge
 function getDistance(userLat, userLng, tarlat, tarlng) {
 
-
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(tarlat - userLat);  // deg2rad below
     var dLon = deg2rad(tarlng - userLng);
@@ -88,8 +82,6 @@ function getDistance(userLat, userLng, tarlat, tarlng) {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
     return d;
-
-
 }
 
 //Function to convert degrees to radians
@@ -109,8 +101,6 @@ function favourite_button_onclick() {
     }
 }
 
-
-
 //Function to add favourite fridges to user's collection
 function addFavourite(fridgeDocID, currentBtn) {
     firebase.auth().onAuthStateChanged(user => {
@@ -128,21 +118,18 @@ function addFavourite(fridgeDocID, currentBtn) {
             // Checks user's notification settings, and if enabled, adds them to the frdiges watchers
             db.collection("users").doc(user.uid).get().then(doc => {
                 let userData = doc.data();
-                console.log(userData);
                 if (userData.notifyDonate == true) {
                     let fridge = db.collection("fridges").doc(fridgeDocID);
                     fridge.update({
                         usersWatching: firebase.firestore.FieldValue.arrayUnion(user.uid)
                     })
-    
+
                 }
             })
-           
+
         }
-})
-
-    }
-
+    })
+}
 
 // Function to remove favourite fridges from user's collection
 function removeFavourite(fridgeDocID, currentBtn) {
@@ -163,9 +150,7 @@ function removeFavourite(fridgeDocID, currentBtn) {
                 usersWatching: firebase.firestore.FieldValue.arrayRemove(user.uid)
             })
         }
-
     })
-
 }
 
 
