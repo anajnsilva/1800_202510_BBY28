@@ -38,8 +38,7 @@ function displayFridgeInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
     let distance = params.searchParams.get("distance");
-    console.log(ID);
-
+   
     db.collection("fridges")
         .doc(ID)
         .get() // grabs fridge document for the specific fridge page

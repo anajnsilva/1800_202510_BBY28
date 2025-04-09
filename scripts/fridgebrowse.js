@@ -15,18 +15,6 @@ function displayCardsDynamically(collection) {
                     var title = doc.data().name;       // get value of the fridge "name" key
                     var fridgeCode = doc.data().code;    //get unique ID to each fridge to be used for fetching right image
 
-                    function FridgeLocation() {
-                        db.collection("fridges").get().then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                console.log("Document ID:", doc.id); // Log each document's ID
-                                console.log("Document data:", doc.data());
-                            });
-                        }).catch((error) => {
-                            console.log("Error getting documents:", error);
-                        });
-                    }
-                    FridgeLocation();
-
                     let address = doc.data().geolocation; //assigns latitude and longitude to address
                     let { latitude, longitude } = address; //splits up latitude and longitude into their respective values
                     let distance = getDistance(userLat, userLng, latitude, longitude); //calls getDistance with parameters of user position and fridge position

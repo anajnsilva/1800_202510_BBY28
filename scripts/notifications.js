@@ -6,10 +6,10 @@ function displayBadge() {
                 let badge = document.getElementById('red-badge');
 
                 if (docs.docs.length > 0) {
-                    console.log("removing d-none")
+                    
                     badge.classList.remove("d-none");
                 } else {
-                    console.log("adding d-none")
+                    
                     badge.classList.add("d-none");
                 }
             })
@@ -57,7 +57,7 @@ function dismissNotifications() {
                 docs.forEach(doc => {
                     // let docID = doc.id;
                     db.collection("users").doc(user.uid).collection("notifications").doc(doc.id).delete().then(() => {
-                        console.log(doc.id, "deleted");
+                        
                     }).catch(e => console.error(e))
                 })
                 displayBadge();
