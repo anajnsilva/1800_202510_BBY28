@@ -1,5 +1,5 @@
 //Distance Target
-var distanceLimit = 17;
+var distanceLimit = 7;
 
 //Function to convert timestamp to seconds
 function toDateTime(secs) {
